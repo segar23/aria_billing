@@ -1,3 +1,3 @@
-module Aria4r
+module AriaBilling
   VERSION = "0.0.1.alpha"
 end

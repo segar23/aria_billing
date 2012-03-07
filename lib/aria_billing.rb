@@ -1,3 +1,3 @@
-module Aria4r
+module AriaBilling
   # Your code goes here...
 end

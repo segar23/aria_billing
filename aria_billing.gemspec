@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 $:.push File.expand_path("../lib", __FILE__)
-require "aria4r/version"
+require "aria_billing/version"
 
 Gem::Specification.new do |s|
-  s.name        = "aria4r"
-  s.version     = Aria4r::VERSION
+  s.name        = "aria_billing"
+  s.version     = AriaBilling::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Juan Pemberty"]
   s.email       = ["juan@pemberthy.com"]
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{TODO: Write a gem summary}
   s.description = %q{Ruby Wrap for the aria subscription and billing system}
 
-  s.rubyforge_project = "aria4r"
+  s.rubyforge_project = "aria_billing"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
