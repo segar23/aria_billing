@@ -15,7 +15,10 @@ module AriaBilling
         end
       end
     end
-
     required_attribute *ATTS
+
+    def self.credentials
+      { api_key: api_key, client_no: client_no }
+    end
   end
 end

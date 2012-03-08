@@ -33,4 +33,12 @@ describe AriaBilling::Configuration do
     end
   end
 
+  describe "self.credentials" do
+    it "returns a hash of :api_key and :auth_key" do
+      AriaBilling::Configuration.api_key = "1234"
+      AriaBilling::Configuration.client_no = "5678"
+      AriaBilling::Configuration.credentials.should == { api_key: "1234", client_no: "5678" }
+    end
+  end
+
 end
