@@ -1,6 +1,7 @@
 require "httparty"
 require "aria_billing/exceptions"
 require "aria_billing/configuration"
+require 'aria_billing/support'
 
 module AriaBilling
   include HTTParty
@@ -13,6 +14,5 @@ module AriaBilling
   def self.request_defaults
     { output_format: "json" }.merge AriaBilling::Configuration.credentials
   end
-
 
 end
