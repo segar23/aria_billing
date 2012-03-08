@@ -1,6 +1,6 @@
 module AriaBilling
   class Configuration
-    ATTS = [ :api_key, :client_no, :url ]
+    ATTS = [ :auth_key, :client_no, :url ]
 
     class << self
       attr_writer *ATTS
@@ -18,7 +18,7 @@ module AriaBilling
     required_attribute *ATTS
 
     def self.credentials
-      { api_key: api_key, client_no: client_no }
+      { auth_key: auth_key, client_no: client_no }
     end
   end
 end

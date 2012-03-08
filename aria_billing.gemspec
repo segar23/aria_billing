@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Juan Pemberty"]
   s.email       = ["juan@pemberthy.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
+  s.summary     = %q{Ruby Wrap for the aria subscription and billing system}
   s.description = %q{Ruby Wrap for the aria subscription and billing system}
 
   s.rubyforge_project = "aria_billing"

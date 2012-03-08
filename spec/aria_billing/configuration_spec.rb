@@ -2,13 +2,13 @@ require 'spec_helper'
 
 describe AriaBilling::Configuration do
 
-  describe "self.api_key" do
+  describe "self.auth_key" do
     it "raises an exception if it hasn't been set yet" do
-      AriaBilling::Configuration.instance_variable_set(:@api_key, nil)
+      AriaBilling::Configuration.instance_variable_set(:@auth_key, nil)
 
       expect {
-        AriaBilling::Configuration.api_key
-      }.to raise_error(AriaBilling::ConfigurationError, "AriaBilling::Configuration.api_key needs to be set")
+        AriaBilling::Configuration.auth_key
+      }.to raise_error(AriaBilling::ConfigurationError, "AriaBilling::Configuration.auth_key needs to be set")
     end
   end
 
@@ -34,10 +34,10 @@ describe AriaBilling::Configuration do
   end
 
   describe "self.credentials" do
-    it "returns a hash of :api_key and :auth_key" do
-      AriaBilling::Configuration.api_key = "1234"
+    it "returns a hash of :auth_key and :auth_key" do
+      AriaBilling::Configuration.auth_key = "1234"
       AriaBilling::Configuration.client_no = "5678"
-      AriaBilling::Configuration.credentials.should == { api_key: "1234", client_no: "5678" }
+      AriaBilling::Configuration.credentials.should == { auth_key: "1234", client_no: "5678" }
     end
   end
 
