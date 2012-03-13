@@ -6,7 +6,7 @@ module AriaBilling
       API_CALLS.each do |call_name|
         define_method(call_name) do |opts|
           params = { rest_call: call_name }.merge(opts)
-          AriaBilling.make_request(params)
+          response = AriaBilling.make_request(params)
         end
       end
     end
