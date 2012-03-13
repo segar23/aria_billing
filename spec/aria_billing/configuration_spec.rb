@@ -41,4 +41,8 @@ describe AriaBilling::Configuration do
     end
   end
 
+  after(:all) do
+    SupportSpecHelper.use_development_credentials
+  end
+
 end
