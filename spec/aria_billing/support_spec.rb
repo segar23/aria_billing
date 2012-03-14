@@ -19,18 +19,18 @@ describe AriaBilling::Support do
 
   describe "self.gen_random_string(params)",:vcr do
     it "generates a random string" do 
-      response= AriaBilling::Support.gen_random_string({"rand_type" => "A",
+      response= AriaBilling::Support.gen_random_string({"rand_type" => 'A',
                                                         "rand_length" => 5,
-                                                        "rand_case" => "U"})
+                                                        "rand_case" => 'U'})
       response["random_string"].should_not be_nil
-      response["random_string"].lenght == 5
-      response["random_string"].upcase! be_nil
+      response["random_string"].should have(5).caracters
+      response["random_string"].should match(/^[^a-z]*$/)
     end
 
     it "returns errors" do 
-       response= AriaBilling::Support.gen_random_string({"rand_type" => "K",
+       response= AriaBilling::Support.gen_random_string({"rand_type" => 'K',
                                                         "rand_length" => 5,
-                                                        "rand_case" => "P"})
+                                                        "rand_case" => 'P'})
        response["random_string"].should be_nil
        response["error_msg"].should == "invalid input"
     end  
@@ -38,19 +38,20 @@ describe AriaBilling::Support do
 
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
-      response = AriaBilling::Support.get_client_countries()
+      response = AriaBilling::Support.get_client_countries({})
 
-      response["client_contry"][0]["country_cd"].should == "CA"
-      response["client_contry"][0]["country_native"].should == "Canada"
-      response["client_contry"][0]["country_english"].should == "Canada"
-      response["client_contry"][0]["iso_3166_1n"].should == 124
-      response["client_contry"][0]["currency_cd"].should == "cad"
+      response.inspect.should include("\"country_cd\"=>\"CA\"")
+      response.inspect.should include("\"country_native\"=>\"Canada\"")
+      response.inspect.should include("\"country_english\"=>\"Canada\"")
+      response.inspect.should include("\"iso_3166_1n\"=>\"124\"")
+      response.inspect.should include("\"currency_cd\"=>\"cad\"")
 
-      response["client_contry"][1]["country_cd"].should == "US"
-      response["client_contry"][1]["country_native"].should == "United States"
-      response["client_contry"][1]["country_english"].should == "United States"
-      response["client_contry"][1]["iso_3166_1n"].should == 840
-      response["client_contry"][1]["currency_cd"].should == "usd"
+      response.inspect.should include("\"country_cd\"=>\"US\"")
+      response.inspect.should include("\"country_native\"=>\"United States\"")
+      response.inspect.should include("\"country_english\"=>\"United States\"")
+      response.inspect.should include("\"iso_3166_1n\"=>\"840\"")
+      response.inspect.should include("\"currency_cd\"=>\"usd\"")
+      
     end
   end
 end

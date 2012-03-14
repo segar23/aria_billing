@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://secure.future.stage.ariasystems.net/api/ws/api_ws_class_dispatcher.php
+    body:
+      encoding: US-ASCII
+      string: output_format=json&auth_key=8Vn848nuRPa58jht9jBBpWvSUVsn3fnB&client_no=4950701&rest_call=get_client_countries
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Mar 2012 16:15:16 GMT
+      Server:
+      - Apache
+      Content-Length:
+      - '293'
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - citrix_ns_id=/cU5nxpf/SYT+xJ68Qf2B1BwruMA0; Domain=.future.stage.ariasystems.net;
+        Path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! '{"client_country":[{"country_cd":"CA","country_native":"Canada","country_english":"Canada","iso_3166_1n":"124","currency_cd":"cad"},{"country_cd":"US","country_native":"United
+        States","country_english":"United States","iso_3166_1n":"840","currency_cd":"usd"}],"error_code":0,"error_msg":"OK"}
+
+'
+    http_version: 
+  recorded_at: Wed, 14 Mar 2012 16:15:17 GMT
+recorded_with: VCR 2.0.0

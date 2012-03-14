@@ -1,6 +1,6 @@
 module AriaBilling
   class Support
-    API_CALLS = [ 'get_country_from_ip','gen_random_string','get_client_countries']
+    API_CALLS = [ 'get_country_from_ip' ]
 
     class << self
       API_CALLS.each do |call_name|
