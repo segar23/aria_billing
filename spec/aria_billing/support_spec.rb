@@ -40,18 +40,17 @@ describe AriaBilling::Support do
     it "return a list of countries assigned to a client" do
       response = AriaBilling::Support.get_client_countries({})
 
-      response.inspect.should include("\"country_cd\"=>\"CA\"")
-      response.inspect.should include("\"country_native\"=>\"Canada\"")
-      response.inspect.should include("\"country_english\"=>\"Canada\"")
-      response.inspect.should include("\"iso_3166_1n\"=>\"124\"")
-      response.inspect.should include("\"currency_cd\"=>\"cad\"")
+      response["client_country"][0]["country_cd"].should == "CA"
+      response["client_country"][0]["country_native"].should == "Canada"
+      response["client_country"][0]["country_english"].should == "Canada"
+      response["client_country"][0]["iso_3166_1n"].should == "124"
+      response["client_country"][0]["currency_cd"].should == "cad"
 
-      response.inspect.should include("\"country_cd\"=>\"US\"")
-      response.inspect.should include("\"country_native\"=>\"United States\"")
-      response.inspect.should include("\"country_english\"=>\"United States\"")
-      response.inspect.should include("\"iso_3166_1n\"=>\"840\"")
-      response.inspect.should include("\"currency_cd\"=>\"usd\"")
-      
+      response["client_country"][1]["country_cd"].should == "US"
+      response["client_country"][1]["country_native"].should == "United States"
+      response["client_country"][1]["country_english"].should == "United States"
+      response["client_country"][1]["iso_3166_1n"].should == "840"
+      response["client_country"][1]["currency_cd"].should == "usd"      
     end
   end
 end
