@@ -22,7 +22,7 @@ describe AriaBilling::Support do
       response= AriaBilling::Support.gen_random_string({"rand_type" => "A",
                                                         "rand_length" => 5,
                                                         "rand_case" => "U"})
-      response["random_string"].nil? == false
+      response["random_string"].should_not be_nil
       response["random_string"].lenght == 5
       response["random_string"].upcase! be_nil
     end
@@ -40,17 +40,17 @@ describe AriaBilling::Support do
     it "return a list of countries assigned to a client" do
       response = AriaBilling::Support.get_client_countries()
 
-      response["0"]["country_cd"].should == "CA"
-      response["0"]["country_native"].should == "Canada"
-      response["0"]["country_english"].should == "Canada"
-      response["0"]["iso_3166_1n"].should == 124
-      response["0"]["currency_cd"].should == "cad"
+      response["client_contry"][0]["country_cd"].should == "CA"
+      response["client_contry"][0]["country_native"].should == "Canada"
+      response["client_contry"][0]["country_english"].should == "Canada"
+      response["client_contry"][0]["iso_3166_1n"].should == 124
+      response["client_contry"][0]["currency_cd"].should == "cad"
 
-      response["1"]["country_cd"].should == "US"
-      response["1"]["country_native"].should == "United States"
-      response["1"]["country_english"].should == "United States"
-      response["1"]["iso_3166_1n"].should == 840
-      response["1"]["currency_cd"].should == "usd"
+      response["client_contry"][1]["country_cd"].should == "US"
+      response["client_contry"][1]["country_native"].should == "United States"
+      response["client_contry"][1]["country_english"].should == "United States"
+      response["client_contry"][1]["iso_3166_1n"].should == 840
+      response["client_contry"][1]["currency_cd"].should == "usd"
     end
   end
 end
