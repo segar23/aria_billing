@@ -16,4 +16,41 @@ describe AriaBilling::Support do
       response["error_msg"].should == "no data found"
     end
   end
+
+  describe "self.gen_random_string(params)",:vcr do
+    it "generates a random string" do 
+      response= AriaBilling::Support.gen_random_string({"rand_type" => "A",
+                                                        "rand_length" => 5,
+                                                        "rand_case" => "U"})
+      response["random_string"].nil? == false
+      response["random_string"].lenght == 5
+      response["random_string"].upcase! be_nil
+    end
+
+    it "returns errors" do 
+       response= AriaBilling::Support.gen_random_string({"rand_type" => "K",
+                                                        "rand_length" => 5,
+                                                        "rand_case" => "P"})
+       response["random_string"].should be_nil
+       response["error_msg"].should == "invalid input"
+    end  
+  end
+
+  describe "self.get_client_countries(params)",:vcr do
+    it "return a list of countries assigned to a client" do
+      response = AriaBilling::Support.get_client_countries()
+
+      response["0"]["country_cd"].should == "CA"
+      response["0"]["country_native"].should == "Canada"
+      response["0"]["country_english"].should == "Canada"
+      response["0"]["iso_3166_1n"].should == 124
+      response["0"]["currency_cd"].should == "cad"
+
+      response["1"]["country_cd"].should == "US"
+      response["1"]["country_native"].should == "United States"
+      response["1"]["country_english"].should == "United States"
+      response["1"]["iso_3166_1n"].should == 840
+      response["1"]["currency_cd"].should == "usd"
+    end
+  end
 end
