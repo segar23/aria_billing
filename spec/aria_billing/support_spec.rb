@@ -36,7 +36,7 @@ describe AriaBilling::Support do
 
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
-      response = AriaBilling::Support.get_client_countries({})
+      response = AriaBilling::Support.get_client_countries
 
       response["client_country"][0]["country_cd"].should == "CA"
       response["client_country"][0]["country_native"].should == "Canada"
