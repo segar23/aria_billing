@@ -25,6 +25,7 @@ describe AriaBilling::Support do
       response["random_string"].should_not be_nil
       response["random_string"].should have(5).caracters
       response["random_string"].should match(/^[^a-z]*$/)
+      response.code.should == 200
     end
 
     it "returns errors" do 
@@ -50,7 +51,62 @@ describe AriaBilling::Support do
       response["client_country"][1]["country_native"].should == "United States"
       response["client_country"][1]["country_english"].should == "United States"
       response["client_country"][1]["iso_3166_1n"].should == "840"
-      response["client_country"][1]["currency_cd"].should == "usd"      
+      response["client_country"][1]["currency_cd"].should == "usd"
+
+      response.code.should == 200      
+    end
+    #TODO: returns errors change:auth_key and client_no
+  end
+
+  describe "self.userid_exists(params)",:vcr do
+    it "Determines whether a specified user ID is already in use" do
+      response=AriaBilling::Support.userid_exists({"user_id" => 'PSLcorp'})
+
+      response["error_msg"].should == "account does not exist"
+      response["error_code"].should == 1009
+
+      response.code.should == 200
+    end
+    #TODO:returns existing account
+  end
+
+  describe "self.userid_is_available(params)",:vcr do
+    it "Determines whether a specified user ID is avalible for use" do
+      response=AriaBilling::Support.userid_is_available({"user_id" => 'PSLcorp'})
+
+      response["error_msg"].should == "OK"
+      response["error_code"].should == 0
+
+      response.code.should == 200
+    end
+    #TODO: returns user id is taken error_code:5011.
+  end
+
+  describe "self.validate_session(params)",:vcr do
+    #TODO:return a valid session ID.
+    # it "Determines the validity of a specified session and the user with session ID" do
+    # end
+    it "return invalid session" do
+      response=AriaBilling::Support.validate_session({"session_id" => '123456'})
+
+      response["user_id"].should be_nil
+      response["account_no"].should be_nil
+      response["error_msg"].should == "invalid session"
     end
   end
+
+  describe "self.get_web_replacement_vals(params)",:vcr do
+    it "get an array of values for an array of input web replacement strings" do 
+      response=AriaBilling::Support.get_web_replacement_vals({"in_replacement_names[0]" => "One|Two"})
+
+      response["web_vals_out"][0]["out_replacement_names"].should == "One"
+      response["web_vals_out"][0]["out_replacement_values"].should == ""
+
+      response["web_vals_out"][1]["out_replacement_names"].should == "Two"
+      response["web_vals_out"][1]["out_replacement_values"].should == ""
+
+      response.code.should == 200
+  end
+end
+
 end
