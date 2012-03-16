@@ -298,4 +298,86 @@ describe AriaBilling::Support do
     end
   end
 
+  describe "self.modify_acct_supp_fields(params)",:vcr do
+    it "Updates or deletes one or more supplemental fields and/or values associate with a specified account" do
+      response = AriaBilling::Support.modify_acct_plan_contract({ "acct_no" => 1, "acct_supp_fields" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.modify_acct_supp_fields(params)",:vcr do
+    it "Updates or deletes one or more supplemental fields and/or values associate with a specified account" do
+      response = AriaBilling::Support.modify_acct_plan_contract({ "acct_no" => 1, "acct_supp_fields" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.modify_supp_plan(params)", :vcr do
+    it "Changes the rate schedule and/or the number of units a supplemental plan assigned to a specified account" do
+      response = AriaBilling::Support.modify_supp_plan({ "acct_no" => 1, "supp_plan_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("proration_result_amount")
+      response.should have_key("invoice_no")
+      response.should have_key("supp_plan_line_items")
+      response.should have_key("total_charges_before_tax")
+      response.should have_key("total_tax_charges")
+      response.should have_key("total_charges_after_tax")
+      response.should have_key("total_credit")   
+    end
+  end
+
+  describe "self.remove_acct_from_group(params)",:vcr do
+    it "Removes a particular account from a specified account group" do
+      response = AriaBilling::Support.remove_acct_from_group({ "acct_no" => 1, "group_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.remove_custom_acct_rates(params)",:vcr do
+    it "Removes the alternate rate schedule assigned to a specified account" do
+      response = AriaBilling::Support.remove_custom_acct_rates({ "acct_no" => 1, "plan_no" => 1 })
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.remove_pay_mehod(params)",:vcr do
+    it "Removes the form of payment associate with the account and replaces it with Other/None" do
+      response = AriaBilling::Support.remove_pay_mehod({ "acct_no" => 1 })
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.replace_supp_plan(params)",:vcr do
+    it "Removes the supplemental plan assigned to a specified account and Assigns a new supplemental plan to the account" do
+      params = { "acct_no" => 1, "existing_supp_plan_no" => 1, "new_supp_plan_no" => 2 }
+      response = AriaBilling::Support.replace_supp_plan params
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("proration_result_amount")
+      response.should have_key("invoice_no")
+      response.should have_key("supp_plan_line_items")
+      response.should have_key("total_charges_before_tax")
+      response.should have_key("total_tax_charges")
+      response.should have_key("total_charges_after_tax")
+      response.should have_key("total_credit")
+
+    end
+  end
+
 end
