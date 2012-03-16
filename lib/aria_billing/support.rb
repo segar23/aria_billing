@@ -9,7 +9,11 @@ module AriaBilling
                   'assign_supp_plan','ban_acct','cancel_acct_plan_contract','cancel_supp_plan',
                   'close_acct_installation','create_acct_plan_contract','modify_acct_plan_contract',
                   'modify_supp_plan','modify_acct_supp_field','remove_acct_from_group',
-                  'remove_custom_acct_rates','remove_pay_mehod','replace_supp_plan']
+                  'remove_custom_acct_rates','remove_pay_mehod','replace_supp_plan',
+                  'set_pay_method_bank_draft', 'set_pay_method_cc','set_pay_method_net_terms',
+                  'set_payment_responsibility','update_acct_complete','update_acct_contact',
+                  'update_acct_credentials','update_acct_notify','update_acct_status',
+                  'update_supp_fields','update_existing_billing_info']
 
     class << self
       API_CALLS.each do |call_name|

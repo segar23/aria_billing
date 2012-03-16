@@ -106,7 +106,7 @@ describe AriaBilling::Support do
 
   describe "self.reset_usg_ptd_bal(params)",:vcr do 
     it "Reset account's Billing-Period-To-date unbilled usage balance to zero" do
-      response = AriaBilling::Support.reset_usg_mtd_bal({"acct_no" => 1})
+      response = AriaBilling::Support.reset_usg_ptd_bal({"acct_no" => 1})
 
       response.should have_key("error_code")
       response.should have_key("error_msg")
@@ -356,6 +356,7 @@ describe AriaBilling::Support do
   describe "self.remove_pay_mehod(params)",:vcr do
     it "Removes the form of payment associate with the account and replaces it with Other/None" do
       response = AriaBilling::Support.remove_pay_mehod({ "acct_no" => 1 })
+
       response.should have_key("error_code")
       response.should have_key("error_msg")
 
@@ -380,4 +381,168 @@ describe AriaBilling::Support do
     end
   end
 
+  describe "self.set_pay_method_bank_draft(params)",:vcr do
+    it "Sets a validated bank account as the payment method of a specified account" do
+      response = AriaBilling::Support.set_pay_method_bank_draft({ "account_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("collection_error_code")
+      response.should have_key("collection_error_msg")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cavv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+      
+    end
+  end
+
+  describe "self.set_pay_method_cc(params)",:vcr do
+    it "Sets a validated credit card as the payment method of a specified account" do
+      params = { "account_no" => 1, "cc_expire_mm" => 03, "cc_expire_yyyy" => 2012 }
+      response = AriaBilling::Support.set_pay_method_cc params
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("collection_error_code")
+      response.should have_key("collection_error_msg")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cavv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+      
+    end
+  end
+
+  describe "self.set_pay_method_net_terms(params)",:vcr do
+    it "Sets a form of net terms as the payment method of a specified account" do
+      response = AriaBilling::Support.set_pay_method_net_terms({ "acct_no" => 1, "pay_method" => -1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.set_payment_responsibility(params)",:vcr do
+    it "specifies the account that responsible for paying a particular customer's invoices" do
+      response = AriaBilling::Support.set_payment_responsibility({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.update_acct_complete(params)",:vcr do
+    it "Update the contac information" do
+      response = AriaBilling::Support.update_acct_complete({"acct_no" => 1})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("proration_result_amount")
+      response.should have_key("collection_error_code")
+      response.should have_key("collection_error_msg")
+      response.should have_key("parent_child_sync_error_code")
+      response.should have_key("parent_child_sync_error_msg")
+      response.should have_key("master_plan_error_code")
+      response.should have_key("master_plan_error_msg")
+      response.should have_key("master_plan_coll_error_code")
+      response.should have_key("master_plan_coll_error_msg")
+      response.should have_key("master_plan_stmt_error_code")
+      response.should have_key("master_plan_stmt_error_msg")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cavv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+      response.should have_key("invoice_no")
+      response.should have_key("cancelled_supp_plans")
+
+    end
+  end
+
+  describe "self.update_acct_contact(params)",:vcr do
+    it "Update the contac information for a specified account" do
+      response = AriaBilling::Support.update_acct_contact({"account_no" => 1})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.update_acct_credentials(params)",:vcr do
+    it "Changes the password, secret question, secret answer, and/or personal identification number for specified account" do
+      response = AriaBilling::Support.update_acct_credentials({"account_no" => 1})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.update_acct_notify(params)",:vcr do
+    it "Sets the method by which invoices are sent to a specified account" do
+      response = AriaBilling::Support.update_acct_notify({"account_no" => 1, "notify_method" => 2})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.update_acct_status(params)",:vcr do
+    it "Sets the status of a speciefied account" do
+      response = AriaBilling::Support.update_acct_status({"account_no" => 1, "status_cd" => 2})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.update_supp_fields(params)",:vcr do
+    it "Changes the value of a particular supplemental field associate with a specified account" do
+      response = AriaBilling::Support.update_supp_fields({"account_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+=begin
+  describe "self.update_existing_billing_info(params)",:vcr do
+    it "Updates some billing info " do
+      response = AriaBilling::Support.update_existing_billing_info({ "acct_no" => 1 })
+
+      puts response
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("collection_error_code")
+      response.should have_key("collection_error_msg")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cavv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+
+    end
+  end
+=end
 end
