@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency "httparty"
+  s.add_dependency "json"
 
   ["rake", "rspec", "vcr", "webmock"].each do |dev_dependency|
     s.add_dependency dev_dependency

@@ -4,94 +4,67 @@ describe AriaBilling::Support do
   describe "self.get_country_from_ip(params)", :vcr do
     it "returns the country code and name of a given IP" do
       response = AriaBilling::Support.get_country_from_ip("ip_address" => "64.71.167.222")
-      response["country_code"].should == "US"
-      response["country_name"].should == "United States"
-      response.code.should == 200
-    end
 
-    it "returns errors" do
-      response = AriaBilling::Support.get_country_from_ip("ip_address" => "1.1.1")
-      response["country_code"].should be_nil
-      response["country_name"].should be_nil
-      response["error_msg"].should == "no data found"
+      response.should have_key("country_code")
+      response.should have_key("country_name")
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
     end
   end
 
   describe "self.gen_random_string(params)",:vcr do
-    it "generates a random string" do 
-      response= AriaBilling::Support.gen_random_string({"rand_type" => 'A',
-                                                        "rand_length" => 5,
-                                                        "rand_case" => 'U'})
-      response["random_string"].should_not be_nil
-      response["random_string"].should have(5).caracters
-      response["random_string"].should match(/^[^a-z]*$/)
-      response.code.should == 200
-    end
+    it "generates a random string" do
+      params = { "rand_type" => 'A', "rand_length" => 5, "rand_case" => 'U' }
+      response= AriaBilling::Support.gen_random_string params
 
-    it "returns errors" do 
-       response= AriaBilling::Support.gen_random_string({"rand_type" => 'K',
-                                                        "rand_length" => 5,
-                                                        "rand_case" => 'P'})
-       response["random_string"].should be_nil
-       response["error_msg"].should == "invalid input"
-    end  
+      response.should have_key("random_string")
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
   end
 
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = AriaBilling::Support.get_client_countries({})
 
-      response["client_country"][0]["country_cd"].should == "CA"
-      response["client_country"][0]["country_native"].should == "Canada"
-      response["client_country"][0]["country_english"].should == "Canada"
-      response["client_country"][0]["iso_3166_1n"].should == "124"
-      response["client_country"][0]["currency_cd"].should == "cad"
+      response.should have_key("client_country")
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
 
-      response["client_country"][1]["country_cd"].should == "US"
-      response["client_country"][1]["country_native"].should == "United States"
-      response["client_country"][1]["country_english"].should == "United States"
-      response["client_country"][1]["iso_3166_1n"].should == "840"
-      response["client_country"][1]["currency_cd"].should == "usd"
-
-      response.code.should == 200      
     end
-    #TODO: returns errors change:auth_key and client_no
   end
 
   describe "self.userid_exists(params)",:vcr do
     it "Determines whether a specified user ID is already in use" do
       response=AriaBilling::Support.userid_exists({"user_id" => 'PSLcorp'})
 
-      response["error_msg"].should == "account does not exist"
-      response["error_code"].should == 1009
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
 
-      response.code.should == 200
     end
-    #TODO:returns existing account
   end
 
   describe "self.userid_is_available(params)",:vcr do
     it "Determines whether a specified user ID is avalible for use" do
       response=AriaBilling::Support.userid_is_available({"user_id" => 'PSLcorp'})
 
-      response["error_msg"].should == "OK"
-      response["error_code"].should == 0
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
 
-      response.code.should == 200
     end
-    #TODO: returns user id is taken error_code:5011.
   end
 
   describe "self.validate_session(params)",:vcr do
-    #TODO:return a valid session ID.
-    # it "Determines the validity of a specified session and the user with session ID" do
-    # end
-    it "return invalid session" do
+   it "Determines the validity of a specified session and the user with session ID" do
       response=AriaBilling::Support.validate_session({"session_id" => '123456'})
 
-      response["user_id"].should be_nil
-      response["account_no"].should be_nil
-      response["error_msg"].should == "invalid session"
+      response.should have_key("user_id")
+      response.should have_key("account_no")
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
     end
   end
 
@@ -99,14 +72,60 @@ describe AriaBilling::Support do
     it "get an array of values for an array of input web replacement strings" do 
       response=AriaBilling::Support.get_web_replacement_vals({"in_replacement_names[0]" => "One|Two"})
 
-      response["web_vals_out"][0]["out_replacement_names"].should == "One"
-      response["web_vals_out"][0]["out_replacement_values"].should == ""
+      response.should have_key("web_vals_out")
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
 
-      response["web_vals_out"][1]["out_replacement_names"].should == "Two"
-      response["web_vals_out"][1]["out_replacement_values"].should == ""
-
-      response.code.should == 200
+    end
   end
-end
 
+#Account Unbilled Usage Summary Information
+
+  describe "self.reset_usg_mtd_bal(params)",:vcr do 
+    it "Reset account's Mounth-To-date unbilled usage balance to zero" do
+      response=AriaBilling::Support.reset_usg_mtd_bal({"acct_no" => 1})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
+  describe "self.reset_usg_ptd_bal(params)",:vcr do 
+    it "Reset account's Billing-Period-To-date unbilled usage balance to zero" do
+      response=AriaBilling::Support.reset_usg_mtd_bal({"acct_no" => 1})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
+  describe "self.set_acct_usg_mtd_threshold(params)",:vcr do 
+    it "Set the Month-To-date unbilled usage threshold amount on 
+        the account for account-holder notifications" do
+      response=AriaBilling::Support.set_acct_usg_mtd_threshold({"acct_no" => 1,"ammount"=> 2000})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
+  describe "self.set_acct_usg_ptd_threshold(params)",:vcr do 
+    it "Set the Billing-Period-To-date unbilled usage threshold amount on
+        the account on for account-holder notifications" do
+      response=AriaBilling::Support.set_acct_usg_ptd_threshold({"acct_no" => 1,"ammount"=> 2000})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
+  describe "self.set_client_usg_mtd_threshold(params)",:vcr do 
+    it "Set the Month-To-date unbilled usage threshold
+        amount on the account for client event notification" do
+      response=AriaBilling::Support.set_client_usg_mtd_threshold({"acct_no" => 1,"ammount"=> 2000})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
 end

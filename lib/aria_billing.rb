@@ -1,4 +1,5 @@
 require "httparty"
+require "json"
 require "aria_billing/exceptions"
 require "aria_billing/configuration"
 require 'aria_billing/support'
