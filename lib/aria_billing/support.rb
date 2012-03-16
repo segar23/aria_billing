@@ -4,7 +4,7 @@ module AriaBilling
                   'userid_exists','userid_is_available','validate_session',
                   'get_web_replacement_vals','reset_usg_mtd_bal','reset_usg_ptd_bal',
                   'set_acct_usg_mtd_threshold','set_acct_usg_ptd_threshold','set_client_usg_mtd_threshold',
-                  'set_client_usg_ptd_threshold']
+                  'set_client_usg_ptd_threshold','get_unbilled_usage_summary','create_acct_complete']
 
     class << self
       API_CALLS.each do |call_name|
