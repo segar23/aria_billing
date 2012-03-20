@@ -746,4 +746,13 @@ describe AriaBilling::Support do
     end
   end
 
+  describe "self.get_acct_trans_history(params)", :vcr do
+    it "Returns a list of financial transactions associated with an account" do
+      response = AriaBilling::Support.get_acct_trans_history({ "account_no" => 1 })
+      puts response
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("history")
+    end
+  end
 end
