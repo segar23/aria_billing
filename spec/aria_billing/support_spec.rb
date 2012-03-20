@@ -705,4 +705,15 @@ describe AriaBilling::Support do
       response.should have_key("acct_plan_contract")
     end
   end
+
+  describe "self.get_acct_plan_history(params)", :vcr do
+    it "Returns the list of plans currently and previously assigned to an account" do
+      response = AriaBilling::Support.get_acct_plan_history({ "account_number" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("plan_hist")
+    end
+  end
+
 end
