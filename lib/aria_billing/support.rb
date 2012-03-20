@@ -15,7 +15,7 @@ module AriaBilling
                   'update_acct_credentials','update_acct_notify','update_acct_status',
                   'update_supp_fields','update_existing_billing_info','get_acct_comments',
                   'authenticate_client','get_acct_details_all','get_acct_groups_by_acct',
-                  'get_acct_notify_method','get_acct_no_from_userid']
+                  'get_acct_notify_method','get_acct_no_from_userid','get_acct_plan_contract']
 
     class << self
       API_CALLS.each do |call_name|
