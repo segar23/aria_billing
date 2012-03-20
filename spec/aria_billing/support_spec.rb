@@ -749,10 +749,28 @@ describe AriaBilling::Support do
   describe "self.get_acct_trans_history(params)", :vcr do
     it "Returns a list of financial transactions associated with an account" do
       response = AriaBilling::Support.get_acct_trans_history({ "account_no" => 1 })
-      puts response
+
       response.should have_key("error_code")
       response.should have_key("error_msg")
       response.should have_key("history")
+    end
+  end
+
+  # describe "self.get_accts_w_existing_pay_meth(params)", :vcr do
+  #  it "For the given input specified electronic form of payment" do
+  #    response = AriaBilling::Support.get_accts_w_existing_pay_meth({})
+  #
+  #
+  #  end
+  # end
+
+  describe "self.get_avail_child_plans_for_acct(params)", :vcr do
+    it "Returns a list of financial transactions associated with an account" do
+      response = AriaBilling::Support.get_avail_child_plans_for_acct({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("plans")
     end
   end
 end
