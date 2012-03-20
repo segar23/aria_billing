@@ -716,4 +716,13 @@ describe AriaBilling::Support do
     end
   end
 
+  describe "self.get_acct_plans(params)", :vcr do
+    it "Returns the details of master and supplemental plans most recently assigned to a specified account" do
+      response = AriaBilling::Support.get_acct_plans({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("acct_plans")
+    end
+  end
 end
