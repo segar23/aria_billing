@@ -716,4 +716,43 @@ describe AriaBilling::Support do
     end
   end
 
+  describe "self.get_acct_plans(params)", :vcr do
+    it "Returns the details of master and supplemental plans most recently assigned to a specified account" do
+      response = AriaBilling::Support.get_acct_plans({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("acct_plans")
+    end
+  end
+
+  describe "self.get_acct_plans_all(params)", :vcr do
+    it "Returns the plan, service, and rate schedule data for all master and supplemental assigned to a specified account" do
+      response = AriaBilling::Support.get_acct_plans_all({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("all_acct_plans")
+    end
+  end
+
+  describe "self.get_acct_supp_fields(params)", :vcr do
+    it "Returns a list of supplemental field names nad values associated with an account" do
+      response = AriaBilling::Support.get_acct_supp_fields({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("supp_fields")
+    end
+  end
+
+  describe "self.get_acct_trans_history(params)", :vcr do
+    it "Returns a list of financial transactions associated with an account" do
+      response = AriaBilling::Support.get_acct_trans_history({ "account_no" => 1 })
+      puts response
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("history")
+    end
+  end
 end
