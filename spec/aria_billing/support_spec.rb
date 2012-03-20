@@ -59,7 +59,7 @@ describe AriaBilling::Support do
 
   describe "self.get_web_replacement_vals(params)",:vcr do
     it "get an array of values for an array of input web replacement strings" do 
-      response = AriaBilling::Support.get_web_replacement_vals({"in_replacement_names[0]" => "One|Two"})
+      response = AriaBilling::Support.get_web_replacement_vals({"in_replacement_names" => "One|Two"})
 
       response.should have_key("web_vals_out")
       response.should have_key("error_code")
@@ -174,7 +174,7 @@ describe AriaBilling::Support do
     end
   end
 
-#Account Modification
+# Account Modification
 
   describe "self.adjust_billing_dates(params)",:vcr do 
     it "Adjust the billing date for a specified account to a date in the future or date in the past" do
@@ -522,27 +522,46 @@ describe AriaBilling::Support do
 
     end
   end
-=begin
-  describe "self.update_existing_billing_info(params)",:vcr do
-    it "Updates some billing info " do
-      response = AriaBilling::Support.update_existing_billing_info({ "acct_no" => 1 })
+  
+  # describe "self.update_existing_billing_info(params)",:vcr do
+  #  it "Updates some billing info " do
+  #    response = AriaBilling::Support.update_existing_billing_info({ "acct_no" => 1 })
+  #
+  #    puts response
+  #
+  #    response.should have_key("error_code")
+  #    response.should have_key("error_msg")
+  #    response.should have_key("collection_error_code")
+  #    response.should have_key("collection_error_msg")
+  #    response.should have_key("proc_cvv_response")
+  #    response.should have_key("proc_avs_response")
+  #    response.should have_key("proc_cavv_response")
+  #    response.should have_key("proc_status_code")
+  #    response.should have_key("proc_status_text")
+  #    response.should have_key("proc_payment_id")
+  #    response.should have_key("proc_auth_code")
+  #   response.should have_key("proc_merch_comments")
 
-      puts response
+  #  end
+  # end 
 
+# Account Data Retrievel
+  
+  # describe "self.authenticate_client(params)",:vcr do
+  #  it "check client credentials" do
+  #    response = AriaBilling::Support.authenticate_client({})
+  #
+  #  end
+  # end
+
+  describe "self.get_acct_comments(params)",:vcr do
+    it "Returns the comments associated with a particular account" do
+      params = {"acct_no" => 1, "date_range_strat" => '2010-01-01', "date_range_end" => '2012-03-20' }
+      response = AriaBilling::Support.get_acct_comments params
+
+      response.should have_key("acct_comments")
       response.should have_key("error_code")
       response.should have_key("error_msg")
-      response.should have_key("collection_error_code")
-      response.should have_key("collection_error_msg")
-      response.should have_key("proc_cvv_response")
-      response.should have_key("proc_avs_response")
-      response.should have_key("proc_cavv_response")
-      response.should have_key("proc_status_code")
-      response.should have_key("proc_status_text")
-      response.should have_key("proc_payment_id")
-      response.should have_key("proc_auth_code")
-      response.should have_key("proc_merch_comments")
-
     end
   end
-=end
 end
