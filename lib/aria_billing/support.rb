@@ -13,12 +13,8 @@ module AriaBilling
                   'set_pay_method_bank_draft', 'set_pay_method_cc','set_pay_method_net_terms',
                   'set_payment_responsibility','update_acct_complete','update_acct_contact',
                   'update_acct_credentials','update_acct_notify','update_acct_status',
-<<<<<<< HEAD
-                  'update_supp_fields','update_existing_billing_info','get_acct_comments']
-=======
                   'update_supp_fields','update_existing_billing_info','get_acct_comments',
-                  'authenticate_client']
->>>>>>> master
+                  'authenticate_client','get_acct_details_all']
 
     class << self
       API_CALLS.each do |call_name|
