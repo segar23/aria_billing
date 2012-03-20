@@ -735,4 +735,15 @@ describe AriaBilling::Support do
       response.should have_key("all_acct_plans")
     end
   end
+
+  describe "self.get_acct_supp_fields(params)", :vcr do
+    it "Returns a list of supplemental field names nad values associated with an account" do
+      response = AriaBilling::Support.get_acct_supp_fields({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("supp_fields")
+    end
+  end
+
 end
