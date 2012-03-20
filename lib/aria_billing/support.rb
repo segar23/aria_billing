@@ -14,7 +14,8 @@ module AriaBilling
                   'set_payment_responsibility','update_acct_complete','update_acct_contact',
                   'update_acct_credentials','update_acct_notify','update_acct_status',
                   'update_supp_fields','update_existing_billing_info','get_acct_comments',
-                  'authenticate_client','get_acct_details_all','get_acct_groups_by_acct']
+                  'authenticate_client','get_acct_details_all','get_acct_groups_by_acct',
+                  'get_acct_notify_method','get_acct_no_from_userid']
 
     class << self
       API_CALLS.each do |call_name|

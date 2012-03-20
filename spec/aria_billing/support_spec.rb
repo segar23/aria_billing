@@ -674,4 +674,13 @@ describe AriaBilling::Support do
 
     end
   end
+
+  # describe "self.get_acct_no_from_userid(params)",:vcr do
+  #  it "Returns the account number associated with a specified user ID" do
+  #    response = AriaBilling::Support.get_acct_no_from_userid({ "user_id" => 'PSLcorp'})
+  #
+  #    response.should have_key("error_code")
+  #    response.should have_key("error_msg")
+  #  end
+  # end
 end
