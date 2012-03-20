@@ -298,15 +298,7 @@ describe AriaBilling::Support do
     end
   end
 
-  describe "self.modify_acct_supp_fields(params)",:vcr do
-    it "Updates or deletes one or more supplemental fields and/or values associate with a specified account" do
-      response = AriaBilling::Support.modify_acct_plan_contract({ "acct_no" => 1, "acct_supp_fields" => 1 })
 
-      response.should have_key("error_code")
-      response.should have_key("error_msg")
-
-    end
-  end
 
   describe "self.modify_acct_supp_fields(params)",:vcr do
     it "Updates or deletes one or more supplemental fields and/or values associate with a specified account" do
@@ -526,7 +518,7 @@ describe AriaBilling::Support do
    describe "self.update_existing_billing_info(params)",:vcr do
     it "Updates some billing info " do
       response = AriaBilling::Support.update_existing_billing_info({ "acct_no" => 1 })
-  
+
       response.should have_key("error_code")
       response.should have_key("error_msg")
       response.should have_key("collection_error_code")
@@ -552,14 +544,15 @@ describe AriaBilling::Support do
   #  end
   # end
 
+
   describe "self.get_acct_comments(params)",:vcr do
     it "Returns the comments associated with a particular account" do
       params = {"acct_no" => 1, "date_range_start" => '2010-01-01', "date_range_end" => '2012-03-20' }
       response = AriaBilling::Support.get_acct_comments params
-
+      puts response
       response.should have_key("acct_comments")
       response.should have_key("error_code")
       response.should have_key("error_msg")
     end
-  end
+   end
 end
