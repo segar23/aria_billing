@@ -663,4 +663,15 @@ describe AriaBilling::Support do
 
     end
   end
+
+  describe "self.get_acct_groups_by_acct(params)",:vcr do 
+    it "Returns the list of account groups to which an account belongs" do
+      response = AriaBilling::Support.get_acct_groups_by_acct({ "acct_no" => 1, "user_id" => 'PSLcorp'})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("acct_groups")
+
+    end
+  end
 end
