@@ -547,9 +547,9 @@ describe AriaBilling::Support do
 
   describe "self.get_acct_comments(params)",:vcr do
     it "Returns the comments associated with a particular account" do
-      params = {"acct_no" => 1, "date_range_start" => '2010-01-01', "date_range_end" => '2012-03-20' }
+      params = { "acct_no" => 1, "date_range_start" => '2010-01-01', "date_range_end" => '2012-03-20' }
       response = AriaBilling::Support.get_acct_comments params
-      puts response
+
       response.should have_key("acct_comments")
       response.should have_key("error_code")
       response.should have_key("error_msg")
@@ -558,12 +558,12 @@ describe AriaBilling::Support do
 
   describe "self.get_acct_details_all(params)",:vcr do
     it "Returns all avalible information about an account" do 
-      response = AriaBilling::Support.get_acct_details_all({"acct_no" => 1})
+      response = AriaBilling::Support.get_acct_details_all({ "acct_no" => 1})
 
       response.should have_key("first_name")
       response.should have_key("mi")
       response.should have_key("last_name")
-      response.should have_key("user_id")
+      response.should have_key("userid")
       response.should have_key("birthdate")
       response.should have_key("job_title")
       response.should have_key("salutation")
