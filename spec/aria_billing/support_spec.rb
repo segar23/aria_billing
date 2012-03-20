@@ -725,4 +725,14 @@ describe AriaBilling::Support do
       response.should have_key("acct_plans")
     end
   end
+
+  describe "self.get_acct_plans_all(params)", :vcr do
+    it "Returns the plan, service, and rate schedule data for all master and supplemental assigned to a specified account" do
+      response = AriaBilling::Support.get_acct_plans_all({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("all_acct_plans")
+    end
+  end
 end
