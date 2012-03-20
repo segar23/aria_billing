@@ -298,27 +298,8 @@ describe AriaBilling::Support do
     end
   end
 
-<<<<<<< HEAD
-  describe "self.modify_acct_supp_fields(params)",:vcr do
-    it "Updates or deletes one or more supplemental fields and/or values associate with a specified account" do
-      response = AriaBilling::Support.modify_acct_plan_contract({ "acct_no" => 1, "acct_supp_fields" => 1 })
 
-      response.should have_key("error_code")
-      response.should have_key("error_msg")
 
-=======
-  describe "self.gen_random_string(params)",:vcr do
-    it "generates a random string" do
-      params = { "rand_type" => 'A', "rand_length" => 5, "rand_case" => 'U' }
-      response= AriaBilling::Support.gen_random_string params
-      response["random_string"].should_not be_nil
-      response["random_string"].should have(5).caracters
-      response["random_string"].should match(/^[^a-z]*$/)
->>>>>>> 28e9a185ccee1fc15bbcdf78d638d662241bb308
-    end
-  end
-
-<<<<<<< HEAD
   describe "self.modify_acct_supp_fields(params)",:vcr do
     it "Updates or deletes one or more supplemental fields and/or values associate with a specified account" do
       response = AriaBilling::Support.modify_acct_plan_contract({ "acct_no" => 1, "acct_supp_fields" => 1 })
@@ -564,36 +545,16 @@ describe AriaBilling::Support do
   #
   #  end
   # end
-=======
-    it "returns errors" do
-      params = {"rand_type" => 'K',"rand_length" => 5, "rand_case" => 'P'}
-      response = AriaBilling::Support.gen_random_string params
-      response["random_string"].should be_nil
-      response["error_msg"].should == "invalid input"
-    end
-  end
 
-  describe "self.get_client_countries(params)",:vcr do
-    it "return a list of countries assigned to a client" do
-      response = AriaBilling::Support.get_client_countries
->>>>>>> 28e9a185ccee1fc15bbcdf78d638d662241bb308
 
-  describe "self.get_acct_comments(params)",:vcr do
-    it "Returns the comments associated with a particular account" do
-      params = {"acct_no" => 1, "date_range_strat" => '2010-01-01', "date_range_end" => '2012-03-20' }
-      response = AriaBilling::Support.get_acct_comments params
-
-<<<<<<< HEAD
-      response.should have_key("acct_comments")
-      response.should have_key("error_code")
-      response.should have_key("error_msg")
-=======
-      response["client_country"][1]["country_cd"].should == "US"
-      response["client_country"][1]["country_native"].should == "United States"
-      response["client_country"][1]["country_english"].should == "United States"
-      response["client_country"][1]["iso_3166_1n"].should == "840"
-      response["client_country"][1]["currency_cd"].should == "usd"
->>>>>>> 28e9a185ccee1fc15bbcdf78d638d662241bb308
-    end
-  end
+  #describe "self.get_acct_comments(params)",:vcr do
+  #  it "Returns the comments associated with a particular account" do
+  #    params = {"acct_no" => 1, "date_range_strat" => '2010-01-01', "date_range_end" => '2012-03-20' }
+  #    response = AriaBilling::Support.get_acct_comments params
+  #    puts response
+  #    response.should have_key("acct_comments")
+  #    response.should have_key("error_code")
+  #    response.should have_key("error_msg")
+  #  end
+  # end
 end
