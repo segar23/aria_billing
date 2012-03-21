@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://secure.future.stage.ariasystems.net/api/ws/api_ws_class_dispatcher.php
+    body:
+      encoding: US-ASCII
+      string: output_format=json&auth_key=8Vn848nuRPa58jht9jBBpWvSUVsn3fnB&client_no=4950701&rest_call=get_acct_details_all&acct_no=1
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Mar 2012 21:46:05 GMT
+      Server:
+      - Apache
+      Content-Length:
+      - '2198'
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - citrix_ns_id=W9JZ7U23IIivmO5wy6OOc59yzDsA0; Domain=.future.stage.ariasystems.net;
+        Path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! '{"first_name":null,"mi":null,"last_name":null,"userid":null,"birthdate":null,"job_title":null,"salutation":null,"senior_acct_no":null,"client_acct_id":null,"resp_level_cd":null,"is_test_acct":null,"alt_email":null,"address1":null,"address2":null,"city":null,"state_prov":null,"locality":null,"postal_code":null,"country":null,"company_name":null,"cell_phone_npa":null,"cell_phone_nxx":null,"cell_phone_suffix":null,"fax_phone":null,"intl_cell_phone":null,"intl_phone":null,"phone_extension":null,"phone_npa":null,"phone_nxx":null,"phone_suffix":null,"work_phone_extension":null,"work_phone_npa":null,"work_phone_nxx":null,"work_phone_suffix":null,"bill_day":null,"created":null,"date_to_expire":null,"date_to_suspend":null,"last_arrears_bill_thru_date":null,"last_bill_date":null,"last_bill_thru_date":null,"next_bill_date":null,"plan_date":null,"status_date":null,"status_degrade_date":null,"status_cd":null,"status_label":null,"plan_no":null,"plan_name":null,"plan_units":null,"notify_method":null,"notify_method_name":null,"PASSWORD":null,"pin":null,"secret_question":null,"secret_question_answer":null,"pay_method":null,"pay_method_name":null,"currency_cd":null,"tax_id":null,"billing_email":null,"billing_first_name":null,"billing_middle_initial":null,"billing_last_name":null,"billing_address1":null,"billing_address2":null,"billing_city":null,"billing_state":null,"billing_locality":null,"billing_zip":null,"billing_country":null,"cc_suffix":null,"cc_expire_mm":null,"cc_expire_yyyy":null,"cc_id":null,"bank_acct_suffix":null,"bank_routing_no":null,"billing_cell_phone_npa":null,"billing_cell_phone_nxx":null,"billing_cell_phone_suffix":null,"billing_company_name":null,"billing_intl_phone":null,"billing_phone_extension":null,"billing_phone_npa":null,"billing_phone_nxx":null,"billing_phone_suffix":null,"billing_work_phone_extension":null,"billing_work_phone_npa":null,"billing_work_phone_nxx":null,"billing_work_phone_suffix":null,"balance":null,"acct_create_client_receipt_id":null,"plan_client_receipt_id":null,"status_client_receipt_id":null,"taxpayer_id":null,"promo_cd":null,"error_code":1009,"alt_msg_template_no":null,"seq_func_group_no":null,"error_msg":"account
+        does not exist"}
+
+'
+    http_version: 
+  recorded_at: Wed, 21 Mar 2012 21:46:04 GMT
+recorded_with: VCR 2.0.0
