@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://secure.future.stage.ariasystems.net/api/ws/api_ws_class_dispatcher.php
+    body:
+      encoding: US-ASCII
+      string: output_format=json&auth_key=8Vn848nuRPa58jht9jBBpWvSUVsn3fnB&client_no=4950701&rest_call=update_acct_notify&account_no=1&notify_method=2
+    headers: {}
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Wed, 21 Mar 2012 16:38:51 GMT
+      Server:
+      - Apache
+      Status:
+      - 404 Not Found
+      Content-Length:
+      - '46'
+      Keep-Alive:
+      - timeout=15, max=100
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - citrix_ns_id=4s3kagzpznPo/aZw0kK0qmYNgpwA0; Domain=.future.stage.ariasystems.net;
+        Path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! '{"error_code":-1,"error_msg":"not attempted"}
+
+'
+    http_version: 
+  recorded_at: Wed, 21 Mar 2012 16:38:54 GMT
+recorded_with: VCR 2.0.0

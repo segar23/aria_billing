@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://secure.future.stage.ariasystems.net/api/ws/api_ws_class_dispatcher.php
+    body:
+      encoding: US-ASCII
+      string: output_format=json&auth_key=8Vn848nuRPa58jht9jBBpWvSUVsn3fnB&client_no=4950701&rest_call=gen_random_string&rand_type=A&rand_length=5&rand_case=U
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Mar 2012 16:38:05 GMT
+      Server:
+      - Apache
+      Content-Length:
+      - '58'
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - citrix_ns_id=e1UN/7cXwZqfPFPpHT0Cg28SRbwA0; Domain=.future.stage.ariasystems.net;
+        Path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! '{"error_code":0,"error_msg":"OK","random_string":"U5PYJ"}
+
+'
+    http_version: 
+  recorded_at: Wed, 21 Mar 2012 16:38:08 GMT
+recorded_with: VCR 2.0.0
