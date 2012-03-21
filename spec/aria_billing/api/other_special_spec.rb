@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Other / Special" do
+describe "Other-Special" do
 
   def api
     AriaBilling

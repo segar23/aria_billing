@@ -17,12 +17,11 @@ module AriaBilling
   end
 
   class << self
-  	AriaBilling::Service::CALLS.each do |call_name|
-  		define_method(call_name) do |opts = {}|
-  			params = { rest_call: call_name }.merge(opts)
-  			make_request params
-  		end
-  	end
+    AriaBilling::Service::CALLS.each do |call_name|
+      define_method(call_name) do |opts={}|
+        params = { rest_call: call_name }.merge(opts)
+        make_request params
+      end
+    end
   end
-
 end

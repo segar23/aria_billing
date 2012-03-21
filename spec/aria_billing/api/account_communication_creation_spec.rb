@@ -45,4 +45,3 @@ describe "Account Communication Creation" do
     end
   end
 end
-

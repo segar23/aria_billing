@@ -75,7 +75,6 @@ describe "Account Modification" do
       response.should have_key("error_msg")
       response.should have_key("proration_result_amount")
       response.should have_key("invoice_no")
-
     end
   end
 

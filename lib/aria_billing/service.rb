@@ -23,6 +23,5 @@ module AriaBilling
               'get_standing_usage','get_supp_field_values','get_usage_history',
               'get_userid_from_acct_no','gen_statement','send_acct_email',
               'send_arc_threshold_email','write_acct_comment','update_billing_info']
-
   end
 end
