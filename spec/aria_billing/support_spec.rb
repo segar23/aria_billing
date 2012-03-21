@@ -518,13 +518,10 @@ describe AriaBilling::Support do
 # Account Data Retrieval
   
   describe "self.authenticate_client(params)",:vcr do
-    it "is pending" do 
+    it "check client credentials" do 
       pending "TODO"
-      #  it "check client credentials" do
-      #    response = AriaBilling::Support.authenticate_client({})
-      #
-      #  end
-      # end
+      response = AriaBilling::Support.authenticate_client({})
+
     end
   end
 
@@ -661,14 +658,13 @@ describe AriaBilling::Support do
 
   
   describe "self.get_acct_no_from_userid(params)",:vcr do
-    it "is pending" do
+    it "Returns the account number associated with a specified user ID" do
       pending "TODO"
-      #  it "Returns the account number associated with a specified user ID" do
-      #    response = AriaBilling::Support.get_acct_no_from_userid({ "user_id" => 'PSLcorp'})
-      #
-      #    response.should have_key("error_code")
-      #    response.should have_key("error_msg")
-      #  end
+      response = AriaBilling::Support.get_acct_no_from_userid({ "user_id" => 'PSLcorp'})
+      
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
     end
   end
 
@@ -746,13 +742,9 @@ describe AriaBilling::Support do
 
   
   describe "self.get_accts_w_existing_pay_meth(params)", :vcr do
-    it "is pending" do 
-    pending "TODO"
-    #  it "For the given input specified electronic form of payment" do
-    #    response = AriaBilling::Support.get_accts_w_existing_pay_meth({})
-    #
-    #
-    #  end
+    it "For the given input specified electronic form of payment" do
+      pending "TODO" 
+      response = AriaBilling::Support.get_accts_w_existing_pay_meth({})
     end
   end
 
