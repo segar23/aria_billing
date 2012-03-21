@@ -814,4 +814,14 @@ describe AriaBilling::Support do
       response.should have_key("current_rate_schedule_no")
     end
   end
+
+  describe "self.get_recurring_credit_info(params)", :vcr do
+    it "Returns a list of recurring credits associated with a specified account" do
+      response = AriaBilling::Support.get_recurring_credit_info({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("recurring_credit_info")
+    end
+  end
 end

@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://secure.future.stage.ariasystems.net/api/ws/api_ws_class_dispatcher.php
+    body:
+      encoding: US-ASCII
+      string: output_format=json&auth_key=8Vn848nuRPa58jht9jBBpWvSUVsn3fnB&client_no=4950701&rest_call=get_recurring_credit_info&acct_no=1
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Mar 2012 13:59:51 GMT
+      Server:
+      - Apache
+      Content-Length:
+      - '63'
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - citrix_ns_id=so0U6k925wogtzUPaMnP419ZXKEA0; Domain=.future.stage.ariasystems.net;
+        Path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! '{"error_code":0,"recurring_credit_info":null,"error_msg":"OK"}
+
+'
+    http_version: 
+  recorded_at: Wed, 21 Mar 2012 13:59:50 GMT
+recorded_with: VCR 2.0.0
