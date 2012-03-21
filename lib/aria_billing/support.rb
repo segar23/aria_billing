@@ -19,7 +19,7 @@ module AriaBilling
                   'get_acct_plan_history','get_acct_plans','get_acct_plans_all',
                   'get_acct_supp_fields','get_acct_trans_history','get_accts_w_existing_pay_meth',
                   'get_avail_child_plans_for_acct','get_avail_child_plans_for_acct_all','get_child_accts',
-                  'get_order_items']
+                  'get_order_items','get_queued_service_plans']
 
     class << self
       API_CALLS.each do |call_name|

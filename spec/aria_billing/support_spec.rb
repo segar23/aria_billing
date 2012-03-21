@@ -803,4 +803,15 @@ describe AriaBilling::Support do
       response.should have_key("order_items")
     end
   end
+
+  describe "self.get_queued_service_plans(params)", :vcr do
+    it "Returns a list of master plan changes schedule to go into effect for a specified account" do
+      response = AriaBilling::Support.get_queued_service_plans({ "account_number" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("queued_plans")
+      response.should have_key("current_rate_schedule_no")
+    end
+  end
 end
