@@ -751,6 +751,17 @@ describe AriaBilling::Support do
     end
   end
 
+  describe "self.send_acct_email(params)",:vcr do
+    it "Sends a specified message type to a particular account holder identified by a user ID" do
+      response = AriaBilling::Support.send_acct_email({"user_id" => 'PSLcorp'})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
+  
+
 # Account Transaction Creation
 
 # Account Transaction Modification
