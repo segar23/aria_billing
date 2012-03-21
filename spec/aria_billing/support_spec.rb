@@ -783,4 +783,14 @@ describe AriaBilling::Support do
       response.should have_key("all_plans")
     end
   end
+
+  describe "self.get_child_accts(params)", :vcr do
+    it "Return all child account numbers associated with a specified parent account number" do
+      response = AriaBilling::Support.get_child_accts({ "parent_acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("child_accts")
+    end
+  end
 end

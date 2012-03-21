@@ -18,7 +18,7 @@ module AriaBilling
                   'get_acct_notify_method','get_acct_no_from_userid','get_acct_plan_contract',
                   'get_acct_plan_history','get_acct_plans','get_acct_plans_all',
                   'get_acct_supp_fields','get_acct_trans_history','get_accts_w_existing_pay_meth',
-                  'get_avail_child_plans_for_acct','get_avail_child_plans_for_acct_all']
+                  'get_avail_child_plans_for_acct','get_avail_child_plans_for_acct_all','get_child_accts']
 
     class << self
       API_CALLS.each do |call_name|
