@@ -843,5 +843,15 @@ describe AriaBilling::Support do
       response.should have_key("error_msg")
       response.should have_key("supp_field_values")
     end
-  end    
+  end
+
+  describe "self.get_usage_history(params)", :vcr do
+    it "Returns the usage records associated with a specified account for a particular date range" do
+      response = AriaBilling::Support.get_usage_history({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("usage_history_records")
+    end
+  end
 end
