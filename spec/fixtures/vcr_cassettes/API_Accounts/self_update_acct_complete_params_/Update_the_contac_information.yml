@@ -1,0 +1,34 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://secure.future.stage.ariasystems.net/api/ws/api_ws_class_dispatcher.php
+    body:
+      encoding: US-ASCII
+      string: output_format=json&auth_key=8Vn848nuRPa58jht9jBBpWvSUVsn3fnB&client_no=4950701&rest_call=update_acct_complete&acct_no=1
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 21 Mar 2012 16:47:59 GMT
+      Server:
+      - Apache
+      Content-Length:
+      - '655'
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - citrix_ns_id=NYN0zso5ho6jViEcyHjpwI3Mk/gA0; Domain=.future.stage.ariasystems.net;
+        Path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! '{"error_code":1009,"proration_result_amount":null,"collection_error_code":null,"collection_error_msg":null,"parent_child_sync_error_code":null,"parent_child_sync_error_msg":null,"master_plan_error_code":null,"master_plan_error_msg":null,"master_plan_coll_error_code":null,"master_plan_coll_error_msg":null,"master_plan_stmt_error_code":null,"master_plan_stmt_error_msg":null,"proc_cvv_response":null,"proc_avs_response":null,"proc_cavv_response":null,"proc_status_code":null,"proc_status_text":null,"proc_payment_id":null,"proc_auth_code":null,"proc_merch_comments":null,"invoice_no":null,"cancelled_supp_plans":null,"error_msg":"account
+        does not exist"}
+
+'
+    http_version: 
+  recorded_at: Wed, 21 Mar 2012 16:48:02 GMT
+recorded_with: VCR 2.0.0
