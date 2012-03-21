@@ -535,7 +535,7 @@ describe AriaBilling::Support do
     end
    end 
 
-# Account Data Retrievel
+# Account Data Retrieval
   
   # describe "self.authenticate_client(params)",:vcr do
   #  it "check client credentials" do
@@ -771,6 +771,16 @@ describe AriaBilling::Support do
       response.should have_key("error_code")
       response.should have_key("error_msg")
       response.should have_key("plans")
+    end
+  end
+
+  describe "self.get_avail_child_plans_for_acct_all(params)", :vcr do
+    it "Return all avalible child plans avalible for assignment to the given acct" do
+      response = AriaBilling::Support.get_avail_child_plans_for_acct_all({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("all_plans")
     end
   end
 end
