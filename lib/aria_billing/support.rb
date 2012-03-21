@@ -21,7 +21,8 @@ module AriaBilling
                   'get_avail_child_plans_for_acct','get_avail_child_plans_for_acct_all','get_child_accts',
                   'get_order_items','get_queued_service_plans','get_recurring_credit_info',
                   'get_standing_usage','get_supp_field_values','get_usage_history',
-                  'get_userid_from_acct_no','gen_statement','send_acct_email']
+                  'get_userid_from_acct_no','gen_statement','send_acct_email',
+                  'send_arc_threshold_email']
 
     class << self
       API_CALLS.each do |call_name|

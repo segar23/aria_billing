@@ -760,7 +760,15 @@ describe AriaBilling::Support do
     end
   end
 
-  
+  describe "self.send_arc_threshold_email(params)",:vcr do
+    it "Send account holder email message using client's configured template for class 'Z'" do
+      params = { "acct_no" => 1, "resource_threshold_level" => 1, "resource_balance" => 1}
+      response = AriaBilling::Support.send_arc_threshold_email params
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end  
 
 # Account Transaction Creation
 
