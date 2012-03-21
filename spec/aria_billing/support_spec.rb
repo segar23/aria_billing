@@ -793,4 +793,14 @@ describe AriaBilling::Support do
       response.should have_key("child_accts")
     end
   end
+
+  describe "self.get_order_items(params)", :vcr do
+    it "Returns information about the items in a particular order associeted with a specified account" do
+      response = AriaBilling::Support.get_order_items({ "order_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("order_items")
+    end
+  end
 end
