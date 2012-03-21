@@ -854,4 +854,13 @@ describe AriaBilling::Support do
       response.should have_key("usage_history_records")
     end
   end
+
+  describe "self.get_userid_from_acct_no(params)", :vcr do
+    it "Returns the usage records associated with a specified account for a particular date range" do
+      response = AriaBilling::Support.get_userid_from_acct_no({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
 end
