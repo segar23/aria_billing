@@ -824,7 +824,7 @@ describe AriaBilling::Support do
       response.should have_key("recurring_credit_info")
     end
   end
-  
+
   describe "self.get_standing_usage(params)", :vcr do
     it "Returns all active standing usage records associated with a specified account" do
       response = AriaBilling::Support.get_standing_usage({ "acct_no" => 1 })
@@ -833,5 +833,15 @@ describe AriaBilling::Support do
       response.should have_key("error_msg")
       response.should have_key("su")
     end
-  end  
+  end
+
+  describe "self.get_supp_field_values(params)", :vcr do
+    it "Returns the values for a particular supplemental field associated with a specified account" do
+      response = AriaBilling::Support.get_supp_field_values({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("supp_field_values")
+    end
+  end    
 end
