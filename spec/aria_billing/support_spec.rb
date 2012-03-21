@@ -25,26 +25,6 @@ describe AriaBilling::Support do
     end
   end
 
-  describe "self.userid_exists(params)",:vcr do
-    it "Determines whether a specified user ID is already in use" do
-      response = AriaBilling::Support.userid_exists({"user_id" => 'PSLcorp'})
-
-      response.should have_key("error_code")
-      response.should have_key("error_msg")
-
-    end
-  end
-
-  describe "self.userid_is_available(params)",:vcr do
-    it "Determines whether a specified user ID is avalible for use" do
-      response = AriaBilling::Support.userid_is_available({"user_id" => 'PSLcorp'})
-
-      response.should have_key("error_code")
-      response.should have_key("error_msg")
-
-    end
-  end
-
   describe "self.validate_session(params)",:vcr do
    it "Determines the validity of a specified session and the user with session ID" do
       response = AriaBilling::Support.validate_session({"session_id" => '123456'})
@@ -537,12 +517,16 @@ describe AriaBilling::Support do
 
 # Account Data Retrieval
   
-  # describe "self.authenticate_client(params)",:vcr do
-  #  it "check client credentials" do
-  #    response = AriaBilling::Support.authenticate_client({})
-  #
-  #  end
-  # end
+  describe "self.authenticate_client(params)",:vcr do
+    it "is pending" do 
+      pending "TODO"
+      #  it "check client credentials" do
+      #    response = AriaBilling::Support.authenticate_client({})
+      #
+      #  end
+      # end
+    end
+  end
 
 
   describe "self.get_acct_comments(params)",:vcr do
@@ -675,14 +659,18 @@ describe AriaBilling::Support do
     end
   end
 
-  # describe "self.get_acct_no_from_userid(params)",:vcr do
-  #  it "Returns the account number associated with a specified user ID" do
-  #    response = AriaBilling::Support.get_acct_no_from_userid({ "user_id" => 'PSLcorp'})
-  #
-  #    response.should have_key("error_code")
-  #    response.should have_key("error_msg")
-  #  end
-  # end
+  
+  describe "self.get_acct_no_from_userid(params)",:vcr do
+    it "is pending" do
+      pending "TODO"
+      #  it "Returns the account number associated with a specified user ID" do
+      #    response = AriaBilling::Support.get_acct_no_from_userid({ "user_id" => 'PSLcorp'})
+      #
+      #    response.should have_key("error_code")
+      #    response.should have_key("error_msg")
+      #  end
+    end
+  end
 
   describe "self.get_acct_notify_method(params)", :vcr do
     it "Returns the method by which statements are sent to a specified account" do
@@ -756,13 +744,17 @@ describe AriaBilling::Support do
     end
   end
 
-  # describe "self.get_accts_w_existing_pay_meth(params)", :vcr do
-  #  it "For the given input specified electronic form of payment" do
-  #    response = AriaBilling::Support.get_accts_w_existing_pay_meth({})
-  #
-  #
-  #  end
-  # end
+  
+  describe "self.get_accts_w_existing_pay_meth(params)", :vcr do
+    it "is pending" do 
+    pending "TODO"
+    #  it "For the given input specified electronic form of payment" do
+    #    response = AriaBilling::Support.get_accts_w_existing_pay_meth({})
+    #
+    #
+    #  end
+    end
+  end
 
   describe "self.get_avail_child_plans_for_acct(params)", :vcr do
     it "Returns a list of financial transactions associated with an account" do
@@ -856,11 +848,31 @@ describe AriaBilling::Support do
   end
 
   describe "self.get_userid_from_acct_no(params)", :vcr do
-    it "Returns the usage records associated with a specified account for a particular date range" do
+    it "Returns the user ID associated with a specified account number" do
       response = AriaBilling::Support.get_userid_from_acct_no({ "acct_no" => 1 })
 
       response.should have_key("error_code")
       response.should have_key("error_msg")
+    end
+  end
+
+  describe "self.userid_exists(params)",:vcr do
+    it "Determines whether a specified user ID is already in use" do
+      response = AriaBilling::Support.userid_exists({"user_id" => 'PSLcorp'})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
+    end
+  end
+
+  describe "self.userid_is_available(params)",:vcr do
+    it "Determines whether a specified user ID is avalible for use" do
+      response = AriaBilling::Support.userid_is_available({"user_id" => 'PSLcorp'})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+
     end
   end
 end
