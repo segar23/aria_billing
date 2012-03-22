@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Account Transaction Creation" do
+describe "Account Transaction Modification" do
 
   def api
     AriaBilling
@@ -35,6 +35,16 @@ describe "Account Transaction Creation" do
       response.should have_key("error_code")
       response.should have_key("error_msg")
       response.should have_key("credit_id")
+    end
+  end
+
+  describe "self.assing_custom_acct_rate(params)",:vcr do 
+    it "Applies custom rates to a particular plan and service assigned to specified account" do
+      params = { "acct_no" => 1, "plan_no" => 1, "service_no" => 1, "custom_acct_rates" => { "rate_seq_no" => 1, "rate_per_unit" => 2, "from_unit" => 1, "to_unit" => 2 } } 
+      response = api.assing_custom_acct_rate params
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
     end
   end
 end
