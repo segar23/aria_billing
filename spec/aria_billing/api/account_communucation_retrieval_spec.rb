@@ -97,4 +97,15 @@ describe "Account Comunication Retrieval" do
       response.should have_key("num_chars")
     end
   end
+
+  describe "self.get_statement_for_invoice(params)",:vcr do 
+    it "Returns a statement associated with a specified account and invoice" do
+      response = api.get_statement_for_invoice ({ "acct_no" => 1, "invoice_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("out_statement")
+      response.should have_key("mime_type")
+    end
+  end
 end
