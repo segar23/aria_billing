@@ -64,5 +64,14 @@ describe "Account Transaction Modification" do
       response.should have_key("error_code")
       response.should have_key("error_msg")
     end
-  end    
+  end
+
+  describe "self.cancel_standing_order(params)",:vcr do 
+    it "Cancels all future orders in a standing order" do
+      response = api.cancel_standing_order ({ "standing_order_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end        
 end
