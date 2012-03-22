@@ -141,4 +141,13 @@ describe "Account Transaction Creation" do
       response.should have_key("transaction_id")
     end
   end
+
+  describe "self.record_standing_usage(params)",:vcr do
+    it "Creates a new standing usage record for a specified account" do
+      response = api.record_standing_usage ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
 end
