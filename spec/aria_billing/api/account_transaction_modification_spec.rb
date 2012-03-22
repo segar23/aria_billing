@@ -73,5 +73,14 @@ describe "Account Transaction Modification" do
       response.should have_key("error_code")
       response.should have_key("error_msg")
     end
-  end        
+  end
+
+  describe "self.cancel_unconsumed_credit(params)",:vcr do 
+    it "Deletes all unused credits associated with a particular coupon" do
+      response = api.cancel_unconsumed_credit ({ "acct_no" => 1, "coupon_cd" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end               
 end

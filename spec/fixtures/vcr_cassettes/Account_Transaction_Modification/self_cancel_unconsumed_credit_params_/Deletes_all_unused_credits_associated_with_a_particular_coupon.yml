@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://secure.future.stage.ariasystems.net/api/ws/api_ws_class_dispatcher.php
+    body:
+      encoding: US-ASCII
+      string: output_format=json&auth_key=8Vn848nuRPa58jht9jBBpWvSUVsn3fnB&client_no=4950701&rest_call=cancel_unconsumed_credit&acct_no=1&coupon_cd=1
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 22 Mar 2012 21:24:16 GMT
+      Server:
+      - Apache
+      Content-Length:
+      - '57'
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - citrix_ns_id=ul++/KuTZhCnBYr5nCX+P1FdHewA0; Domain=.future.stage.ariasystems.net;
+        Path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! '{"error_code":1009,"error_msg":"account does not exist"}
+
+'
+    http_version: 
+  recorded_at: Thu, 22 Mar 2012 21:24:15 GMT
+recorded_with: VCR 2.0.0
