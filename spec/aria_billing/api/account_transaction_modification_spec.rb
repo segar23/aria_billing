@@ -16,4 +16,14 @@ describe "Account Transaction Creation" do
       response.should have_key("transaction_id")
     end
   end
+
+  describe "self.apply_coupon_to_acct(params)",:vcr do 
+    it "Assigns a coupon code to a specified account" do
+      response = api.apply_coupon_to_acct ({ "acct_no" => 1})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("user_success_msg")
+    end
+  end
 end
