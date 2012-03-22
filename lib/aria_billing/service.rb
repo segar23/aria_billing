@@ -28,6 +28,6 @@ module AriaBilling
               'get_statement_content','get_statement_content_size','get_statement_for_inv_size',
               'get_statement_for_invoice','authorize_electronic_payment','collect_from_account',
               'create_order','create_order_with_plans','gen_invoice',
-              'manage_pending_invoice','record_external_payment']
+              'manage_pending_invoice','record_external_payment','record_out_going_payment']
   end
 end
