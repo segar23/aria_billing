@@ -55,5 +55,14 @@ describe "Account Transaction Modification" do
       response.should have_key("error_code")
       response.should have_key("error_msg")
     end
-  end  
+  end
+
+  describe "self.cancel_queued_service_plan(params)",:vcr do 
+    it "Cancels all plan changes scheduled to go into effect for a specified account" do
+      response = api.cancel_queued_service_plan ({ "account_number" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end    
 end
