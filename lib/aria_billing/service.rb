@@ -27,6 +27,6 @@ module AriaBilling
               'get_acct_statement_history','get_acct_status_history','get_acct_supp_plan_history',
               'get_statement_content','get_statement_content_size','get_statement_for_inv_size',
               'get_statement_for_invoice','authorize_electronic_payment','collect_from_account',
-              'create_order','create_order_with_plans']
+              'create_order','create_order_with_plans','gen_invoice']
   end
 end

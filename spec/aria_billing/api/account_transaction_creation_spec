@@ -89,4 +89,14 @@ describe "Account Transaction Creation" do
       response.should have_key("error_msg")      
     end
   end
+
+  describe "self.gen_invoice(params)",:vcr do
+  	it "Generates an incoice for a specified account"
+  	  response = api.gen_invoice ({ "acct_no" => 1 })
+
+  	  response.should have_key("error_code")
+  	  response.should have_key("error_msg")
+  	  response.should have_key("invoice_no")
+    end
+  end
 end
