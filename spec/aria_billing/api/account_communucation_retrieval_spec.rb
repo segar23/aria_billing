@@ -46,4 +46,14 @@ describe "Account Comunication Retrieval" do
       response.should have_key("statement_history")
     end
   end
+
+  describe "self.get_acct_status_history(params)",:vcr do 
+    it "Returns the history of modifications to an account's status" do
+      response = api.get_acct_status_history ({ "account_number" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("stat_hist")
+    end
+  end
 end
