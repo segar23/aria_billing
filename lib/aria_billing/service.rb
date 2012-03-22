@@ -29,6 +29,6 @@ module AriaBilling
               'get_statement_for_invoice','authorize_electronic_payment','collect_from_account',
               'create_order','create_order_with_plans','gen_invoice',
               'manage_pending_invoice','record_external_payment','record_out_going_payment',
-              'record_standing_usage']
+              'record_standing_usage','record_usage']
   end
 end

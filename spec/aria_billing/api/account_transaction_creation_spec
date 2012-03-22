@@ -150,4 +150,14 @@ describe "Account Transaction Creation" do
       response.should have_key("error_msg")
     end
   end
+
+  describe "self.record_usage(params)",:vcr do
+    it "Creates a usage record for a specified account for inclusion in a future invoice" do
+      response = api.record_usage ({ "usage_type" => 1, "usage_units" => 100 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("usage_rec_no")
+    end
+  end
 end
