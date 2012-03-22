@@ -160,4 +160,22 @@ describe "Account Transaction Creation" do
       response.should have_key("usage_rec_no")
     end
   end
+
+  describe "self.settle_account_balance(params)",:vcr do
+    it "Approves,discards,or regenerates a pending invoice" do
+      response = api.settle_account_balance ({ "account_no" => 1 })
+
+      response.should have_key("transaction_id")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cavv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
 end
