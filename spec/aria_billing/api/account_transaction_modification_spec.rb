@@ -47,4 +47,13 @@ describe "Account Transaction Modification" do
       response.should have_key("error_msg")
     end
   end
+
+  describe "self.cancel_order(params)",:vcr do 
+    it "Cancels an account holder's order and stops all billing related to the order if the following are true" do
+      response = api.cancel_order ({ "acct_no" => 1, "order_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end  
 end

@@ -31,6 +31,6 @@ module AriaBilling
               'manage_pending_invoice','record_external_payment','record_out_going_payment',
               'record_standing_usage','record_usage','settle_account_balance',
               'apply_cash_credit','apply_coupon_to_acct','apply_service_credit',
-              'assing_custom_acct_rate']
+              'assing_custom_acct_rate','cancel_order']
   end
 end
