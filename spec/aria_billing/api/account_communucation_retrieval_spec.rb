@@ -66,4 +66,15 @@ describe "Account Comunication Retrieval" do
       response.should have_key("supp_plan_hist")
     end
   end
+
+  describe "self.get_statement_content(params)",:vcr do 
+    it "Returns the contents of a particular statement associated with a specified account" do
+      response = api.get_statement_content ({ "acct_no" => 1, "statement_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("statement_content")
+      response.should have_key("mime_type")
+    end
+  end
 end
