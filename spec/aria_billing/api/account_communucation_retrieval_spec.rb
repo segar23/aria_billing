@@ -36,4 +36,14 @@ describe "Account Comunication Retrieval" do
       response.should have_key("num_chars")
     end
   end
+
+  describe "self.get_acct_statement_history(params)",:vcr do 
+    it "Returns the list of all statements generated for a specified account" do
+      response = api.get_acct_statement_history ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("statement_history")
+    end
+  end
 end
