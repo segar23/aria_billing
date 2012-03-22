@@ -50,8 +50,6 @@ describe "Account Transaction Creation" do
       response.should have_key("transaction_id")
       response.should have_key("statement_error_cd")
       response.should have_key("statement_error_msg")
-      response.should have_key("error_code")
-      response.should have_key("error_msg")
       response.should have_key("proc_cw_response")
       response.should have_key("proc_avs_response")
       response.should have_key("proc_cvv_response")
@@ -60,7 +58,35 @@ describe "Account Transaction Creation" do
       response.should have_key("proc_payment_id")
       response.should have_key("proc_auth_code")
       response.should have_key("proc_merch_comments")
-      
+      response.should have_key("invoice_no")
+      response.should have_key("error_code")
+      response.should have_key("error_msg")      
+    end
+  end
+
+  describe "self.create_order_with_plans(params)",:vcr do 
+    it "Allows creation of order and plan changes on a single invoice" do
+      params = { "acct_no" => 1, "client_sku" => 'Test', "units" => 2, "amount" => 20000, "supp_plan_no" => 1, "supp_plan_units" => 100 }
+      response = api.create_order_with_plans params
+
+      response.should have_key("error_code")
+      response.should have_key("order_no")
+      response.should have_key("invoice_no")
+      response.should have_key("cart_invoice_line_items")
+      response.should have_key("collection_error_code")
+      response.should have_key("collection_error_msg")
+      response.should have_key("statement_error_cd")
+      response.should have_key("statement_error_msg")
+      response.should have_key("transaction_id")
+      response.should have_key("proc_cavv_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+      response.should have_key("error_msg")      
     end
   end
 end
