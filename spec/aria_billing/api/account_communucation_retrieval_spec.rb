@@ -77,4 +77,14 @@ describe "Account Comunication Retrieval" do
       response.should have_key("mime_type")
     end
   end
+
+  describe "self.get_statement_content_size(params)",:vcr do 
+    it "Returns the number of characters in a particular statement associated with a specified account" do
+      response = api.get_statement_content_size ({ "acct_no" => 1, "statement_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("num_chars")
+    end
+  end
 end
