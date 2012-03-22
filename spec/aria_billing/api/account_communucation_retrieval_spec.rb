@@ -56,4 +56,14 @@ describe "Account Comunication Retrieval" do
       response.should have_key("stat_hist")
     end
   end
+
+  describe "self.get_acct_supp_plan_history(params)",:vcr do 
+    it "Returns a list of current and previous supplemental plans assigned to an account" do
+      response = api.get_acct_supp_plan_history ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("supp_plan_hist")
+    end
+  end
 end
