@@ -22,4 +22,22 @@ describe "Account Transaction Creation" do
       response.should have_key("proc_merch_comments")
     end
   end
+
+   describe "self.collect_from_account(params)",:vcr do 
+    it "Collectsm a specified amount from a specified account holder using the electronic method of payment on file" do
+      response = api.collect_from_account ({ "account_no" => 1, "amount_to_collect" => 20000 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("proc_cw_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+      response.should have_key("transaction_id")
+    end
+  end
 end
