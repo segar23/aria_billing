@@ -26,4 +26,15 @@ describe "Account Transaction Creation" do
       response.should have_key("user_success_msg")
     end
   end
+
+  describe "self.apply_service_credit(params)",:vcr do 
+    it "Applies a credit to a future invoice" do
+      params = { "account_no" => 1, "credit_amount" => 20000, "credit_reason_code" => 1 } 
+      response = api.apply_service_credit params
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("credit_id")
+    end
+  end
 end
