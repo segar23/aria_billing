@@ -12,7 +12,7 @@ describe "Account Transaction Creation" do
 
       response.should have_key("error_code")
       response.should have_key("error_msg")
-      response.should have_key("proc_cw_response")
+      response.should have_key("proc_cvv_response")
       response.should have_key("proc_avs_response")
       response.should have_key("proc_cvv_response")
       response.should have_key("proc_status_code")
@@ -29,7 +29,7 @@ describe "Account Transaction Creation" do
 
       response.should have_key("error_code")
       response.should have_key("error_msg")
-      response.should have_key("proc_cw_response")
+      response.should have_key("proc_cvv_response")
       response.should have_key("proc_avs_response")
       response.should have_key("proc_cvv_response")
       response.should have_key("proc_status_code")
@@ -50,7 +50,7 @@ describe "Account Transaction Creation" do
       response.should have_key("transaction_id")
       response.should have_key("statement_error_cd")
       response.should have_key("statement_error_msg")
-      response.should have_key("proc_cw_response")
+      response.should have_key("proc_cvv_response")
       response.should have_key("proc_avs_response")
       response.should have_key("proc_cvv_response")
       response.should have_key("proc_status_code")
@@ -75,7 +75,7 @@ describe "Account Transaction Creation" do
       response.should have_key("cart_invoice_line_items")
       response.should have_key("collection_error_code")
       response.should have_key("collection_error_msg")
-      response.should have_key("statement_error_cd")
+      response.should have_key("statement_error_code")
       response.should have_key("statement_error_msg")
       response.should have_key("transaction_id")
       response.should have_key("proc_cavv_response")
@@ -124,7 +124,7 @@ describe "Account Transaction Creation" do
 
   describe "self.record_external_payment(params)",:vcr do
     it "Records a payment transaction for a payment collected from an account holder without using Aria" do
-      response = api.record_external_payment ({ "account_no" => 1, "payment_ammount" => 20000 })
+      response = api.record_external_payment ({ "account_no" => 1, "payment_amount" => 20000 })
 
       response.should have_key("error_code")
       response.should have_key("error_msg")
@@ -134,7 +134,7 @@ describe "Account Transaction Creation" do
 
   describe "self.record_out_going_payment(params)",:vcr do
     it "Record remittance to net terms accounts" do
-      response = api.record_out_going_payment ({ "account_no" => 1, "payment_ammount" => 20000 })
+      response = api.record_out_going_payment ({ "account_no" => 1, "payment_amount" => 20000 })
 
       response.should have_key("error_code")
       response.should have_key("error_msg")
