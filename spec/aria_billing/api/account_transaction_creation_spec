@@ -121,4 +121,14 @@ describe "Account Transaction Creation" do
   	  response.should have_key("error_msg")
     end
   end
+
+  describe "self.record_external_payment(params)",:vcr do
+    it "Records a payment transaction for a payment collected from an account holder without using Aria" do
+      response = api.record_external_payment ({ "account_no" => 1, "payment_ammount" => 20000 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("transaction_id")
+    end
+  end
 end
