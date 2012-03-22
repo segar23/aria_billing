@@ -1,0 +1,25 @@
+require 'spec_helper'
+
+describe "Account Transaction Creation" do
+
+  def api
+    AriaBilling
+  end
+
+  describe "self.authorize_electronic_payment(params)",:vcr do 
+    it "Authorize a credit card for a specified amount" do
+      response = api.authorize_electronic_payment ({ "account_number" => 1, "amount" => 20000 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("proc_cw_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+    end
+  end
+end

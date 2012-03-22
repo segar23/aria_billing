@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Account Comunication Retrieval" do
+describe "Account Communication Retrieval" do
 
   def api
     AriaBilling

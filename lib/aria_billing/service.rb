@@ -26,6 +26,6 @@ module AriaBilling
               'get_acct_invoice_history', 'get_acct_message','get_acct_message_size',
               'get_acct_statement_history','get_acct_status_history','get_acct_supp_plan_history',
               'get_statement_content','get_statement_content_size','get_statement_for_inv_size',
-              'get_statement_for_invoice']
+              'get_statement_for_invoice','authorize_electronic_payment']
   end
 end
