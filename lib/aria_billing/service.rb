@@ -38,6 +38,6 @@ module AriaBilling
               'get_acct_has_ordered_sku','get_family_trans_history','get_invoice_details',
               'get_order','get_payment_applications','get_payments_on_invoice',
               'get_pending_invoice_no','get_refund_details','get_standing_order',
-              'get_standing_order_hist']
+              'get_standing_order_hist','get_standing_order_items']
   end
 end
