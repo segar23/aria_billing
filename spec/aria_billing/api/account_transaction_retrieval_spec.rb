@@ -68,4 +68,14 @@ describe "Account Transaction Retrieval" do
       response.should have_key("invoice_payments")
     end
   end
+
+  describe "self.get_pending_invoice_no(params)",:vcr do 
+    it "Returns the invoice number of a pending invoice associated with a specified account" do
+      response = api.get_pending_invoice_no ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("invoice_no")
+    end
+  end  
 end
