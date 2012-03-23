@@ -111,5 +111,16 @@ describe "Account Transaction Modification" do
       response.should have_key("error_msg")
       response.should have_key("standing_order_no")
     end
-  end                          
+  end
+
+  describe "self.reinstate_transaction(params)",:vcr do 
+    it "Reinstates a previously voided transaction associated with a specified account number and transaction ID" do
+      
+      response = api.reinstate_transaction ({ "account_no" => 1, "transaction_id" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("new_transaction_id")
+    end
+  end                                
 end
