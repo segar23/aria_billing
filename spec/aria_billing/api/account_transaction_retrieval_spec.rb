@@ -88,4 +88,24 @@ describe "Account Transaction Retrieval" do
       response.should have_key("refund_details")
     end
   end  
+
+  describe "self.get_standing_order(params)",:vcr do 
+    it "Provides information about one or more standing orders associated with a specified account" do
+      response = api.get_standing_order ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("so")
+    end
+  end  
+
+  describe "self.get_standing_order_hist(params)",:vcr do 
+    it "Provides information about the orders that have been created usuing a specified standing order" do
+      response = api.get_standing_order_hist ({ "standing_order_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("order")
+    end
+  end  
 end
