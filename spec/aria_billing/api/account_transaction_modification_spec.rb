@@ -83,7 +83,7 @@ describe "Account Transaction Modification" do
       response.should have_key("error_msg")
     end
   end
-
+  
   describe "self.create_advaced_service_credit(params)",:vcr do 
     it "Creates a one-time service credit or recurring service credit for a specified account" do
       response = api.create_advaced_service_credit ({ "acct_no" => 1 })
@@ -91,5 +91,5 @@ describe "Account Transaction Modification" do
       response.should have_key("error_code")
       response.should have_key("error_msg")
     end
-  end                       
+  end                     
 end
