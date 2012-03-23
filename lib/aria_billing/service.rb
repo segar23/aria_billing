@@ -33,6 +33,9 @@ module AriaBilling
               'apply_cash_credit','apply_coupon_to_acct','apply_service_credit',
               'assing_custom_acct_rate','cancel_order','cancel_queued_service_plan',
               'cancel_standing_order','cancel_unconsumed_credit','create_advaced_service_credit',
-              'disable_standing_usage','record_standing_order','reinstate_transaction']
+              'disable_standing_usage','record_standing_order','reinstate_transaction',
+              'transfer_account_balance','update_acct_billing_contact','void_transaction',
+              'get_acct_has_ordered_sku','get_family_trans_history','get_invoice_details',
+              'get_order','get_payment_applications']
   end
 end

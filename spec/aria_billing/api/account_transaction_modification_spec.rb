@@ -115,12 +115,53 @@ describe "Account Transaction Modification" do
 
   describe "self.reinstate_transaction(params)",:vcr do 
     it "Reinstates a previously voided transaction associated with a specified account number and transaction ID" do
-      
       response = api.reinstate_transaction ({ "account_no" => 1, "transaction_id" => 1 })
 
       response.should have_key("error_code")
       response.should have_key("error_msg")
       response.should have_key("new_transaction_id")
     end
-  end                                
+  end
+
+  describe "self.transfer_account_balance(params)",:vcr do 
+    it "Transfer the balance from one account to another account" do
+      params = { "source_account_no" => 1, "target_account_no" => 2 }
+      response = api.transfer_account_balance params
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("transaction_id")
+      response.should have_key("balance_transferred")
+    end
+  end
+
+  describe "self.update_acct_billing_contact(params)",:vcr do 
+    it "Updates the billing contact information for a specified account" do
+      response = api.update_acct_billing_contact ({ "account_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("collection_error_code")
+      response.should have_key("collection_error_msg")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cavv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+      response.should have_key("error_msg")
+    end
+  end
+
+  describe "self.void_transaction(params)",:vcr do 
+    it "Voids a particular transaction associated with a specified account" do
+      params = { "account_no" => 1, "transaction_id" => 2, "reason_code" => 1 }
+      response = api.void_transaction params
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("new_transaction_id")
+    end
+  end                                  
 end
