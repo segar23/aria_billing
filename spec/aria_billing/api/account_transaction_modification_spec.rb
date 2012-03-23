@@ -91,5 +91,14 @@ describe "Account Transaction Modification" do
       response.should have_key("error_code")
       response.should have_key("error_msg")
     end
-  end                       
+  end   
+
+  describe "self.disable_standing_usage(params)",:vcr do 
+    it "Disables a particular standing usage record for a specified account" do
+      response = api.disable_standing_usage ({ "acct_no" => 1, "standing_usage_rec_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end                        
 end
