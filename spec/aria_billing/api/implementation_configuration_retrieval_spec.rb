@@ -96,6 +96,16 @@ describe "Implementation Configuration Retrieval" do
     end
   end
 
+  describe "self.get_avail_child_plans_for_plan_all(params)",:vcr do
+    it "Return all available child plans subordinate to the given input plan number" do
+      response = api.get_avail_child_plans_for_plan_all ({ "in_plan_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("all_plans")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})
