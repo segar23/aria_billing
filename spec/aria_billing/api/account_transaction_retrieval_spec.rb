@@ -78,4 +78,14 @@ describe "Account Transaction Retrieval" do
       response.should have_key("invoice_no")
     end
   end  
+
+  describe "self.get_refund_details(params)",:vcr do 
+    it "Returns refund information" do
+      response = api.get_refund_details ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("refund_details")
+    end
+  end  
 end
