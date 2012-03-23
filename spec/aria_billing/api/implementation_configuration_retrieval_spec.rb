@@ -6,6 +6,15 @@ describe "Implementation Configuration Retrieval" do
     AriaBilling
   end
 
+  describe "self.clear_reg_uss_config_params(params)",:vcr do
+    it "Removes all of the parameter name-value pairs in a specified configuration" do
+      response = api.clear_reg_uss_config_params ({ "set_name" => 'Test'})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})
