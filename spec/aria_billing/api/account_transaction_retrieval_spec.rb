@@ -108,4 +108,14 @@ describe "Account Transaction Retrieval" do
       response.should have_key("order")
     end
   end  
+
+  describe "self.get_standing_order_items(params)",:vcr do 
+    it "Provides information about the line items in a specified standing order" do
+      response = api.get_standing_order_items ({ "standing_order_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("so_items")
+    end
+  end  
 end
