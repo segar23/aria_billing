@@ -72,6 +72,20 @@ describe "Implementation Configuration Retrieval" do
     end
   end
 
+  describe "self.get_auf_status(params)",:vcr do
+    it "Returns the statistics for a specified usage file" do
+      response = api.get_auf_status 
+
+      response.should have_key("status_cd")
+      response.should have_key("load_date_time")
+      response.should have_key("recs_received")
+      response.should have_key("recs_loaded")
+      response.should have_key("recs_failed")
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})
