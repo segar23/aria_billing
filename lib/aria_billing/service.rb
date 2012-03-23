@@ -35,6 +35,6 @@ module AriaBilling
               'cancel_standing_order','cancel_unconsumed_credit','create_advaced_service_credit',
               'disable_standing_usage','record_standing_order','reinstate_transaction',
               'transfer_account_balance','update_acct_billing_contact','void_transaction',
-              'get_acct_has_ordered_sku']
+              'get_acct_has_ordered_sku','get_family_trans_history']
   end
 end

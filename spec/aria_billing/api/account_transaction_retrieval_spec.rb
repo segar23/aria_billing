@@ -18,4 +18,14 @@ describe "Account Transaction Retrieval" do
       response.should have_key("paid_ind")
     end
   end
+
+  describe "self.get_family_trans_history(params)",:vcr do 
+    it "Returns the transaction history of parent and child accounts" do
+      response = api.get_family_trans_history ({ "parent_acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("fam_trans")
+    end
+  end
 end
