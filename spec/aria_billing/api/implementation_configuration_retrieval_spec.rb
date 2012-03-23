@@ -106,6 +106,16 @@ describe "Implementation Configuration Retrieval" do
     end
   end
 
+  describe "self.get_available_plans(params)",:vcr do
+    it "Gets selectable plans based on current plan" do
+      response = api.get_available_plans ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("plans")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})
