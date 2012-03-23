@@ -133,5 +133,24 @@ describe "Account Transaction Modification" do
       response.should have_key("transaction_id")
       response.should have_key("balance_transferred")
     end
-  end                                
+  end
+
+  describe "self.update_acct_billing_contact(params)",:vcr do 
+    it "Updates the billing contact information for a specified account" do
+      response = api.update_acct_billing_contact ({ "account_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("collection_error_code")
+      response.should have_key("collection_error_msg")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cavv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+      response.should have_key("error_msg")
+    end
+  end                                  
 end
