@@ -36,6 +36,7 @@ module AriaBilling
               'disable_standing_usage','record_standing_order','reinstate_transaction',
               'transfer_account_balance','update_acct_billing_contact','void_transaction',
               'get_acct_has_ordered_sku','get_family_trans_history','get_invoice_details',
-              'get_order','get_payment_applications','get_payments_on_invoice','get_pending_invoice_no']
+              'get_order','get_payment_applications','get_payments_on_invoice',
+              'get_pending_invoice_no','get_refund_details']
   end
 end
