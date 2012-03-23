@@ -62,6 +62,16 @@ describe "Implementation Configuration Retrieval" do
     end
   end
 
+  describe "self.get_acct_payment_methods(params)",:vcr do
+    it "Returns the historical data related to the account's payment methods" do
+      response = api.get_acct_payment_methods ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("acct_pay_methods")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})
