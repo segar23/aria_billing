@@ -117,5 +117,15 @@ describe "Account Transaction Retrieval" do
       response.should have_key("error_msg")
       response.should have_key("so_items")
     end
-  end  
+  end 
+
+  describe "self.get_unapplied_service_credits(params)",:vcr do 
+    it "For a specified account, this call returns all service credits whose credit amounts have not yet been fully applied" do
+      response = api.get_unapplied_service_credits ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("unapplied_service_credits")
+    end
+  end   
 end
