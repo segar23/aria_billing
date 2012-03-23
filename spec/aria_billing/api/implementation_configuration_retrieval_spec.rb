@@ -24,6 +24,16 @@ describe "Implementation Configuration Retrieval" do
     end
   end
 
+  describe "self.client_has_event_class(params)",:vcr do
+    it "Indicates whether a client is subcribed to the specified even notification class" do
+      response = api.client_has_event_class ({ "class_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("response")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})
