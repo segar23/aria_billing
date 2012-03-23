@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://secure.future.stage.ariasystems.net/api/ws/api_ws_class_dispatcher.php
+    body:
+      encoding: US-ASCII
+      string: output_format=json&auth_key=8Vn848nuRPa58jht9jBBpWvSUVsn3fnB&client_no=4950701&rest_call=record_standing_order&account_no=1&billing_interval_units=1&times_to_bill=2&client_sku=Test&units=100&amount=10000&unit_discount_amount=10
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 23 Mar 2012 14:40:11 GMT
+      Server:
+      - Apache
+      Content-Length:
+      - '82'
+      Keep-Alive:
+      - timeout=15, max=100
+      Connection:
+      - Keep-Alive
+      Content-Type:
+      - application/json
+      Set-Cookie:
+      - citrix_ns_id=S7CTxNf5VI2CxPdsrwIspw+EkPoA0; Domain=.future.stage.ariasystems.net;
+        Path=/; HttpOnly
+    body:
+      encoding: US-ASCII
+      string: ! '{"standing_order_no":"","error_code":1016,"error_msg":"Invalid acct_no
+        supplied"}
+
+'
+    http_version: 
+  recorded_at: Fri, 23 Mar 2012 14:40:10 GMT
+recorded_with: VCR 2.0.0

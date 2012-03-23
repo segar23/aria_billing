@@ -91,5 +91,36 @@ describe "Account Transaction Modification" do
       response.should have_key("error_code")
       response.should have_key("error_msg")
     end
-  end                     
+  end   
+
+  describe "self.disable_standing_usage(params)",:vcr do 
+    it "Disables a particular standing usage record for a specified account" do
+      response = api.disable_standing_usage ({ "acct_no" => 1, "standing_usage_rec_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
+  describe "self.record_standing_order(params)",:vcr do 
+    it "Creates a pre-defined, recurring order called a standing order" do
+      params = { "account_no" => 1, "billing_interval_units" => 1, "times_to_bill" => 2, "client_sku" => 'Test', "units" => 100, "amount" => 10000, "unit_discount_amount" => 10 }
+      response = api.record_standing_order params
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("standing_order_no")
+    end
+  end
+
+  describe "self.reinstate_transaction(params)",:vcr do 
+    it "Reinstates a previously voided transaction associated with a specified account number and transaction ID" do
+      
+      response = api.reinstate_transaction ({ "account_no" => 1, "transaction_id" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("new_transaction_id")
+    end
+  end                                
 end
