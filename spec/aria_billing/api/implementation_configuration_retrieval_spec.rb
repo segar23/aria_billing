@@ -15,6 +15,15 @@ describe "Implementation Configuration Retrieval" do
     end
   end
 
+  describe "self.clear_reg_uss_params(params)",:vcr do
+    it "Removes all of the parameter name-value associated with a particular session ID" do
+      response = api.clear_reg_uss_config_params ({ "session_id" => 'Test'})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})
