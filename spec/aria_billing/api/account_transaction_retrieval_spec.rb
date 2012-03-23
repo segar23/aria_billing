@@ -28,4 +28,24 @@ describe "Account Transaction Retrieval" do
       response.should have_key("fam_trans")
     end
   end
+
+  describe "self.get_invoice_details(params)",:vcr do 
+    it "Returns the line items of a specified invoice" do
+      response = api.get_invoice_details ({ "acct_no" => 1, "src_transaction_id" => 2 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("is_pending_ind")
+    end
+  end
+
+  describe "self.get_order(params)",:vcr do 
+    it "Returns information about the orders associated with a specified account" do
+      response = api.get_order ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("order")
+    end
+  end
 end
