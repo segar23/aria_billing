@@ -52,6 +52,16 @@ describe "Implementation Configuration Retrieval" do
     end
   end
 
+  describe "self.get_acct_groups_by_client(params)",:vcr do
+    it "Returns the list of account groups associated with a client" do
+      response = api.get_acct_groups_by_client
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("acct_groups")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})
