@@ -34,6 +34,24 @@ describe "Implementation Configuration Retrieval" do
     end
   end
 
+  describe "self.delete_reg_uss_config_params(params)",:vcr do
+    it "Removes the parameter name-value pairs in a specified configuration" do
+      response = api.delete_reg_uss_config_params ({ "set_name" => 'Test', "param_name" => 'Test'})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
+  describe "self.delete_reg_uss_params(params)",:vcr do
+    it "Removes the parameter name-value pairs in a particular session" do
+      response = api.delete_reg_uss_params ({ "session_id" => 'Test', "param_name" => 'Test'})
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})
