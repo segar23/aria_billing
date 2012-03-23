@@ -128,4 +128,21 @@ describe "Account Transaction Retrieval" do
       response.should have_key("unapplied_service_credits")
     end
   end   
+
+  describe "self.validate_payment_information(params)",:vcr do 
+    it "Determines the validity of a credit card by performing an authorization transaction" do
+      response = api.validate_payment_information ({ "account_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("proc_cvv_response")
+      response.should have_key("proc_avs_response")
+      response.should have_key("proc_cavv_response")
+      response.should have_key("proc_status_code")
+      response.should have_key("proc_status_text")
+      response.should have_key("proc_payment_id")
+      response.should have_key("proc_auth_code")
+      response.should have_key("proc_merch_comments")
+      response.should have_key("error_msg")
+    end
+  end   
 end
