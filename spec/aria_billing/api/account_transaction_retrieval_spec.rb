@@ -48,4 +48,14 @@ describe "Account Transaction Retrieval" do
       response.should have_key("order")
     end
   end
+
+  describe "self.get_payment_applications(params)",:vcr do 
+    it "Returns a list of charge transactions against which a particular credit transaction has been applied for a specified account" do
+      response = api.get_payment_applications ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("payment_applications")
+    end
+  end
 end
