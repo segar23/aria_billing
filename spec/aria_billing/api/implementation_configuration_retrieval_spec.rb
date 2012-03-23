@@ -52,6 +52,60 @@ describe "Implementation Configuration Retrieval" do
     end
   end
 
+  describe "self.get_acct_groups_by_client(params)",:vcr do
+    it "Returns the list of account groups associated with a client" do
+      response = api.get_acct_groups_by_client
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("acct_groups")
+    end
+  end
+
+  describe "self.get_acct_payment_methods(params)",:vcr do
+    it "Returns the historical data related to the account's payment methods" do
+      response = api.get_acct_payment_methods ({ "acct_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("acct_pay_methods")
+    end
+  end
+
+  describe "self.get_auf_status(params)",:vcr do
+    it "Returns the statistics for a specified usage file" do
+      response = api.get_auf_status 
+
+      response.should have_key("status_cd")
+      response.should have_key("load_date_time")
+      response.should have_key("recs_received")
+      response.should have_key("recs_loaded")
+      response.should have_key("recs_failed")
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+    end
+  end
+
+  describe "self.get_avail_child_plans_for_plan(params)",:vcr do
+    it "Return array of all available child plans subordinate to the given input plan number" do
+      response = api.get_avail_child_plans_for_plan ({ "in_plan_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("plans")
+    end
+  end
+
+  describe "self.get_avail_child_plans_for_plan_all(params)",:vcr do
+    it "Return all available child plans subordinate to the given input plan number" do
+      response = api.get_avail_child_plans_for_plan_all ({ "in_plan_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("all_plans")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})

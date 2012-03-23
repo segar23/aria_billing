@@ -40,6 +40,8 @@ module AriaBilling
               'get_pending_invoice_no','get_refund_details','get_standing_order',
               'get_standing_order_hist','get_standing_order_items','get_unapplied_service_credits',
               'validate_payment_information','clear_reg_uss_config_params','clear_reg_uss_params',
-              'client_has_event_class','delete_reg_uss_config_params','delete_reg_uss_params']
+              'client_has_event_class','delete_reg_uss_config_params','delete_reg_uss_params',
+              'get_acct_groups_by_client','get_acct_payment_methods','get_auf_status',
+              'get_avail_child_plans_for_plan','get_avail_child_plans_for_plan_all']
   end
 end
