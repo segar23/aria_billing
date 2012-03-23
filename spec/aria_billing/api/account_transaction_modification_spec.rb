@@ -152,5 +152,16 @@ describe "Account Transaction Modification" do
       response.should have_key("proc_merch_comments")
       response.should have_key("error_msg")
     end
+  end
+
+  describe "self.void_transaction(params)",:vcr do 
+    it "Voids a particular transaction associated with a specified account" do
+      params = { "account_no" => 1, "transaction_id" => 2, "reason_code" => 1 }
+      response = api.void_transaction params
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("new_transaction_id")
+    end
   end                                  
 end
