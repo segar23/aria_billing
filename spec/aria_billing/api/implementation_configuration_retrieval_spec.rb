@@ -126,6 +126,16 @@ describe "Implementation Configuration Retrieval" do
     end
   end
 
+  describe "self.get_child_for_item_class(params)",:vcr do
+    it "Returns the immediate child classes for that client" do
+      response = api.get_child_for_item_class ({ "filter_class_no" => 1 })
+
+      response.should have_key("error_code")
+      response.should have_key("error_msg")
+      response.should have_key("child_item_class")
+    end
+  end
+
   describe "self.get_client_countries(params)",:vcr do
     it "return a list of countries assigned to a client" do
       response = api.get_client_countries({})
