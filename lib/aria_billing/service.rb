@@ -42,6 +42,7 @@ module AriaBilling
               'validate_payment_information','clear_reg_uss_config_params','clear_reg_uss_params',
               'client_has_event_class','delete_reg_uss_config_params','delete_reg_uss_params',
               'get_acct_groups_by_client','get_acct_payment_methods','get_auf_status',
-              'get_avail_child_plans_for_plan','get_avail_child_plans_for_plan_all','get_available_plans']
+              'get_avail_child_plans_for_plan','get_avail_child_plans_for_plan_all','get_available_plans',
+              'get_available_plans_all']
   end
 end
